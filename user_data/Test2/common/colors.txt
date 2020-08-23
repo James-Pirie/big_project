@@ -464,7 +464,7 @@ DDR = {
 }
 KOR = {
 	color = rgb { 255  240  195 }
-	color_ui = rgb { 255 248 229 }
+	color_ui = rgb { 255 248 229 }	
 }
 ISR = {
 	color = rgb { 152  130  191 }

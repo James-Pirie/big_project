@@ -2,68 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ee9e35f-e61c-4292-8680-4b08011d2cbf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/create_a_nation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/Belarus.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/colors.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/country_tags/00_countries.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/country_tags/zz_dynamic_countries.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/history/countries/tag - your_country_name_here" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/template/descriptor.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/big_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/big_project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_a_nation.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_a_nation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/colors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/colors.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/template/descriptor.mod" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/create_a_nation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/country_tags/00_countries.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/template/descriptor.mod">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/Belarus.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/colors.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="3" selection-start-line="2" selection-end-line="2" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -75,70 +25,48 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/data/template/descriptor.mod" />
-        <option value="$PROJECT_DIR$/create_a_nation.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="101" />
-    <option name="y" value="139" />
-    <option name="width" value="3875" />
-    <option name="height" value="2115" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="big_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="big_project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="big_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="big_project" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="big_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="big_project" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="country_tags" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1g7eX1XDJ0iIFlPZPYedBb1Mkjk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\James Pirie\PycharmProjects\big_project\data" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RunManager">
+    <configuration name="create_a_nation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="big_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/create_a_nation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <item itemvalue="Python.create_a_nation" />
       </list>
-    </option>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -153,64 +81,54 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1719" height="932" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24970344" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
+  <component name="WindowStateProjectService">
+    <state x="578" y="250" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598072836849">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state x="578" y="250" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.946@0.23.1680.946" timestamp="1598072836849" />
+    <state x="543" y="110" key="#create_a_nation" timestamp="1598060103884">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state x="543" y="110" key="#create_a_nation/0.23.1680.946@0.23.1680.946" timestamp="1598060103884" />
+    <state width="1659" height="253" key="GridCell.Tab.0.bottom" timestamp="1598178730919">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state width="1659" height="253" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1598178730919" />
+    <state width="1659" height="253" key="GridCell.Tab.0.center" timestamp="1598178730917">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state width="1659" height="253" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1598178730917" />
+    <state width="1659" height="253" key="GridCell.Tab.0.left" timestamp="1598178730916">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state width="1659" height="253" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1598178730916" />
+    <state width="1659" height="253" key="GridCell.Tab.0.right" timestamp="1598178730917">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state width="1659" height="253" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1598178730917" />
+    <state x="371" y="135" key="SettingsEditor" timestamp="1598060123100">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state x="371" y="135" key="SettingsEditor/0.23.1680.946@0.23.1680.946" timestamp="1598060123100" />
+    <state x="478" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1597979930141">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state x="478" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.946@0.23.1680.946" timestamp="1597979930141" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/template/descriptor.mod">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Belarus.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/colors.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="3" selection-start-line="2" selection-end-line="2" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/country_tags/00_countries.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/create_a_nation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/create_a_nation.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/create_a_nation.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
