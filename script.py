@@ -50,25 +50,52 @@ color = { rgb_value } #"""
     country_file.close()
 
 
-def assign_nation_tag(mod_name, tag):
+def assign_nation_tag(mod_name, tag, rgb):
+    new_tag_insert = [f"{tag} = " + "{", f"\tcolor = rgb {rgb}", f"\tcolor_ui = rgb {rgb}", "}"]
+
     if os.path.isfile(f"user_data/{mod_name}/common/colors.txt"):
         original_colour_file = open(f"user_data/{mod_name}/common/colors.txt", "r")
-        string = original_colour_file.read()
-        list_of_existing_tags = string.split()
+        colors_content = original_colour_file.read()
+        original_colour_file.close()
+        list_of_existing_tags = colors_content.split()
         list_of_existing_tags_formatted = []
-        i = 2
-        while i < len(list_of_existing_tags):
-            list_of_existing_tags_formatted.append(list_of_existing_tags[i])
-            i += 20
-        print(list_of_existing_tags_formatted)
+        every_line_in_colors = colors_content.split("\n")
+        f = 0
+        while f < len(list_of_existing_tags):
+            list_of_existing_tags_formatted.append(list_of_existing_tags[f])
+            f += 20
+        if tag in list_of_existing_tags_formatted:
+            new_colors_file = open(f"user_data/{mod_name}/common/colors2.txt", "w+")
+            special_break_conditions = False
+            for i in range(len(every_line_in_colors)):
+                print(f"{i}vs{len(every_line_in_colors)}")
+
+                if tag in every_line_in_colors[i].split():
+                    for x in range(4):
+                        every_line_in_colors.remove(every_line_in_colors[i])
+                    special_break_conditions = True
+                    print(every_line_in_colors)
+                    print(every_line_in_colors)
+
+                if special_break_conditions and i == len(every_line_in_colors) - 4:
+                    break
+            for i in range(len(new_tag_insert)):
+                new_colors_file.write(new_tag_insert[i] + "\n")
+            for i in range(len(every_line_in_colors)):
+                new_colors_file.write(every_line_in_colors[i] + "\n")
+            new_colors_file.close()
+            os.remove(f"user_data/{mod_name}/common/colors.txt")
+            os.rename(f"user_data/{mod_name}/common/colors2.txt", f"user_data/{mod_name}/common/colors.txt")
+            print(every_line_in_colors)
+        else:
+            print("Here")
 
     else:
         colour_file_template = open(f"data/colors.txt").read()
         new_colors_file = open(f"user_data/{mod_name}/common/colors.txt", "w+")
+        for i in range(len(new_tag_insert)):
+            new_colors_file.write(new_tag_insert[i] + "\n")
         new_colors_file.write(colour_file_template)
-        print(colour_file_template)
 
 
-
-
-assign_nation_tag("Test2", "ENG")
+assign_nation_tag("Test2", "EMZ", "{ L L L }")
