@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2ee9e35f-e61c-4292-8680-4b08011d2cbf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_a_nation.py" beforeDir="false" afterPath="$PROJECT_DIR$/script.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/colors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/colors.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/script.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_data/Test2/common/colors.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,22 +112,22 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="543" y="110" key="#create_a_nation/0.23.1680.946@0.23.1680.946" timestamp="1598060103884" />
-    <state width="1659" height="288" key="GridCell.Tab.0.bottom" timestamp="1598309064132">
+    <state width="1659" height="288" key="GridCell.Tab.0.bottom" timestamp="1598322697498">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="288" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1598309064132" />
-    <state width="1659" height="288" key="GridCell.Tab.0.center" timestamp="1598309064121">
+    <state width="1659" height="288" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1598322697498" />
+    <state width="1659" height="288" key="GridCell.Tab.0.center" timestamp="1598322697488">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="288" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1598309064121" />
-    <state width="1659" height="288" key="GridCell.Tab.0.left" timestamp="1598309064119">
+    <state width="1659" height="288" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1598322697488" />
+    <state width="1659" height="288" key="GridCell.Tab.0.left" timestamp="1598322697485">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="288" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1598309064119" />
-    <state width="1659" height="288" key="GridCell.Tab.0.right" timestamp="1598309064129">
+    <state width="1659" height="288" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1598322697485" />
+    <state width="1659" height="288" key="GridCell.Tab.0.right" timestamp="1598322697489">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="288" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1598309064129" />
+    <state width="1659" height="288" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1598322697489" />
     <state x="371" y="135" key="SettingsEditor" timestamp="1598060123100">
       <screen x="0" y="23" width="1680" height="946" />
     </state>

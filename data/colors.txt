@@ -394,7 +394,6 @@ MNT = {
 	color = rgb { 77  90  105 }
 	color_ui = rgb { 77  90  105 }
 }
-
 BLR = {
 	color = rgb { 180 220 190 }
 	color_ui = rgb { 180 220 190 }

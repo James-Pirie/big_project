@@ -1,46 +1,46 @@
-SCI = {
-	color = rgb { 0 0 0 }
-	color_ui = rgb { 152 491 694 }
+PPP = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
 }
-ENF = {
-	color = rgb { A A A }
-	color_ui = rgb { 152 491 694 }
+EIG = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
 }
-PRG = {
-	color = rgb { B B B }
-	color_ui = rgb { 152 491 694 }
+EEQ = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
 }
-HIS = {
-	color = rgb { C C C }
-	color_ui = rgb { 152 491 694 }
+PER = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
 }
-PIG = {
-	color = rgb { D D D }
-	color_ui = rgb { 152 491 694 }
+HOL = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
 }
-SEP = {
-	color = rgb { E E E }
-	color_ui = rgb { 152 491 694 }
+ENG = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
 }
-EMZ = {
-	color = rgb { F F F }
-	color_ui = rgb { 1 1 1 }
+CHI = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
+}
+SWE = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
+}
+EST = {
+	color = rgb { E L L }
+	color_ui = rgb { E L L }
 }
 GER = {
 	color = HSV { 0.1 0.15 0.4 }
 	color_ui = rgb { 138 155 116 }
 }
-ENG = {
-	color = rgb { 201 56 93 }
-	color_ui = rgb { 255 73 121 }
-}
 SOV = {
 	color = rgb { 125 13 24 }
 	color_ui = rgb { 163 17 31 }
-}
-SWE = {
-	color = rgb { 36 132 247 }
-	color_ui = rgb { 47 172 255 }
 }
 FRA = {
 	color = rgb { 57 113 228 }
@@ -53,10 +53,6 @@ LUX = {
 BEL = {
     color = rgb { 193 171 8  }
     color_ui = rgb { 251 222 10 }
-}
-HOL = {
-    color = rgb { 203 138 74 }
-	color_ui = rgb { 255 179 96 }
 }
 CZE = {
     color = rgb { 54 167 156 }
@@ -170,10 +166,6 @@ CAN = {
 	color = rgb { 240  190  190 }
 	color_ui = rgb { 155 62 51 }
 }
-CHI = {
-	color = hsv { 0.18 0.6 0.9 }
-	color_ui = hsv { 0.18 0.3 0.9 }
-}
 CHL = {
 	color = rgb { 155 101 107 }
 	color_ui = rgb { 202 131 139 }
@@ -237,10 +229,6 @@ NZL = {
 PAN = {
 	color = rgb { 152 130 191 }
 	color_ui = rgb { 198 169 248 }
-}
-PER = {
-	color = rgb { 71 113 97 }
-	color_ui = rgb { 92 147 126 }
 }
 PHI = {
 	color = rgb { 152 130 191 }
@@ -422,7 +410,6 @@ MNT = {
 	color = rgb { 77  90  105 }
 	color_ui = rgb { 77  90  105 }
 }
-
 BLR = {
 	color = rgb { 180 220 190 }
 	color_ui = rgb { 180 220 190 }
@@ -707,3 +694,10 @@ SHL = {
 	color = rgb { 51 51 255 }
 	color_ui = rgb { 51 51 255 }
 }
+
+
+
+
+
+
+
