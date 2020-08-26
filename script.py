@@ -3,7 +3,7 @@ list_of_cultures = ["middle_eastern_", "eastern_european_", "southamerican_", "c
                     "african_", "asian_"]
 
 list_of_tags = ["AFG", "ALB", "ARG", "AST", "AUS", "BEL", "BHU", "BOL", "BRA", "MAL", "RAJ", "BUL", "CHL", "CHI", "COL",
-                "PRC", "COS", "CUB", "CZE", "DEN","DOM", "CAN", "INS", "ECU", "ELS", "EST", "ETH", "FIN", "FRA", "GER",
+                "PRC", "COS", "CUB", "CZE", "DEN", "DOM", "CAN", "INS", "ECU", "ELS", "EST", "ETH", "FIN", "FRA", "GER",
                 "GRE", "GXC", "GUA", "HAI", "HON", "PER", "IRQ", "IRE", "ITA", "JAP", "HUN" ,"ROM", "LAT", "LIB", "LIT",
                 "LUX", "MAN", "MEN", "MEX", "MON", "NEP", "HOL", "NZL", "NIC", "NOR", "OMA", "PAN", "PAR", "PRU", "PHI",
                 "POL", "POR", "SAU", "SHX", "SIA", "SIK", "SAF", "SOV", "SPR", "D01", "SWE", "SWI", "TAN", "TIB", "TUR",
@@ -18,7 +18,7 @@ list_of_tags = ["AFG", "ALB", "ARG", "AST", "AUS", "BEL", "BHU", "BOL", "BRA", "
 
 
 def create_a_mod_file(mod_name, mod_tags, game_version, mod_version):
-    """This function creates a mod file for the game to recognize the data."""
+    """This function creates a mod file for the game to recognize the data. This function must always be run first"""
     # I apologize in advance for the terrible indentation of the docstring
     # The indentation is adapted to meet the hoi4 file format
     tags_formatted = """{"""
@@ -48,6 +48,40 @@ graphical_culture_2d = {gfx_2d}
 color = { rgb_value } #"""
     country_file.write(country_file_template)
     country_file.close()
+
+
+def assign_nation_tag(mod_name, tag, country_name):
+    template = f'{tag} = "countries/{country_name}.txt"'
+    if os.path.isfile(f"user_data/{mod_name}/common/country_tags/00_countries.txt"):
+        countries_file = open(f"user_data/{mod_name}/common/country_tags/00_countries.txt", "r")
+        replacement_countries_file = open(f"user_data/{mod_name}/common/country_tags/00_countries2.txt", "w+")
+        original_countries_file_contents = countries_file.read()
+        every_line_in_countries_file = original_countries_file_contents.split("\n")
+        list_of_tags_in_file = []
+        for i in range(len(every_line_in_countries_file)):
+            current_line = every_line_in_countries_file[i]
+            list_of_tags_in_file.append(current_line.split(" =")[0])
+        if tag in list_of_tags_in_file:
+            for i in range(len(every_line_in_countries_file)):
+                every_word_on_current_line = every_line_in_countries_file[i].split()
+                if tag in every_word_on_current_line:
+                    del every_line_in_countries_file[i]
+                    print(every_line_in_countries_file)
+                    break
+        every_line_in_countries_file.append(template)
+        for z in range(len(every_line_in_countries_file)):
+            if every_line_in_countries_file[z] != "":
+                replacement_countries_file.write(every_line_in_countries_file[z] + "\n")
+        os.remove(f"user_data/{mod_name}/common/country_tags/00_countries.txt")
+        os.rename(f"user_data/{mod_name}/common/country_tags/00_countries2.txt",
+                  f"user_data/{mod_name}/common/country_tags/00_countries.txt")
+
+    else:
+        original_countries_file_data = open("data/country_tags/00_countries.txt", "r")
+        new_countries_file_template = original_countries_file_data.read()
+        country_tag_file = open(f"user_data/{mod_name}/common/country_tags/00_countries.txt", "w+")
+        country_tag_file.write(template + "\n")
+        country_tag_file.write(new_countries_file_template)
 
 
 def assign_nation_color(mod_name, tag, rgb):
@@ -97,39 +131,48 @@ def assign_nation_color(mod_name, tag, rgb):
     new_colors_file.close()
 
 
-def assign_nation_tag(mod_name, tag, country_name):
-    template = f'{tag} = "countries/{country_name}.txt"'
-    if os.path.isfile(f"user_data/{mod_name}/common/country_tags/00_countries.txt"):
-        countries_file = open(f"user_data/{mod_name}/common/country_tags/00_countries.txt", "r")
-        replacement_countries_file = open(f"user_data/{mod_name}/common/country_tags/00_countries2.txt", "w+")
-        original_countries_file_contents = countries_file.read()
-        every_line_in_countries_file = original_countries_file_contents.split("\n")
-        list_of_tags_in_file = []
-        for i in range(len(every_line_in_countries_file)):
-            current_line = every_line_in_countries_file[i]
-            list_of_tags_in_file.append(current_line.split(" =")[0])
-        if tag in list_of_tags_in_file:
-            for i in range(len(every_line_in_countries_file)):
-                every_word_on_current_line = every_line_in_countries_file[i].split()
-                if tag in every_word_on_current_line:
-                    del every_line_in_countries_file[i]
-                    print(every_line_in_countries_file)
-                    break
-        every_line_in_countries_file.append(template)
-        for z in range(len(every_line_in_countries_file)):
-            if every_line_in_countries_file[z] != "":
-                replacement_countries_file.write(every_line_in_countries_file[z] + "\n")
-        os.remove(f"user_data/{mod_name}/common/country_tags/00_countries.txt")
-        os.rename(f"user_data/{mod_name}/common/country_tags/00_countries2.txt",
-                  f"user_data/{mod_name}/common/country_tags/00_countries.txt")
-
-    else:
-        original_countries_file_data = open("data/country_tags/00_countries.txt", "r")
-        new_countries_file_template = original_countries_file_data.read()
-        country_tag_file = open(f"user_data/{mod_name}/common/country_tags/00_countries.txt", "w+")
-        country_tag_file.write(template + "\n")
-        country_tag_file.write(new_countries_file_template)
+def create_history_file(mod_name, tag, country_name):
+    template = f"{tag} - {country_name}"
+    os.makedirs(f"user_data/{mod_name}/history/countries")
+    os.mkdir(f"user_data/{mod_name}/history/states")
+    history_file = open(f"user_data/{mod_name}/history/countries/{template}.txt", "w+")
+    history_file.close()
 
 
+def assign_nation_states(mod_name, country_tag, desired_territory, core, controls):
+    list_of_state_files = os.listdir("data/history/states")
+    list_of_state_tags = []
+    owner_template = f"\t\towner = {country_tag}"
+    core_template = f"\t\tadd_core_of = {country_tag}"
+    for v in range(len(desired_territory)):
+        for i in range(len(list_of_state_files)):
+            list_of_state_tags.append(list_of_state_files[i].split("-")[0])
+        state_file_index = list_of_state_tags.index(desired_territory[v])
+        print(list_of_state_files[state_file_index])
+        template_file = open(f"data/history/states/{list_of_state_files[state_file_index]}", "r")
+        template = template_file.read()
+        every_line_in_template = template.split("\n")
+        core_counter = 0
+        for i in range(len(every_line_in_template)):
+            if "owner" in every_line_in_template[i].split() and controls:
+                every_line_in_template[i] = owner_template
+            elif core and "add_core_of" in every_line_in_template[i].split() and core_counter == 0:
+                every_line_in_template.insert(i, core_template)
+                core_counter += 1
+        if os.path.isfile(f"user_data/{mod_name}/history/states"):
+            print("Here")
+            if os.path.isfile(f"user_data/{mod_name}/history/states/{list_of_state_files[state_file_index]}"):
+                os.remove(f"user_data/{mod_name}/history/states/{list_of_state_files[state_file_index]}")
+        state_file = open(f"user_data/{mod_name}/history/states/{list_of_state_files[state_file_index]}", "w+")
+        for x in range(len(every_line_in_template)):
+            state_file.write(every_line_in_template[x] + "\n")
+        state_file.close()
 
 
+nation_name = "Bikini Bottom"
+nation_tag = "BKB"
+rgb_value = "{ 192 168 123 }"
+culture = list_of_cultures[2]
+states = ["23", "1", "199", "300"]
+assign_nation_states("Test2", "ELS", states, True, True)
+# create_history_file("Test2", nation_tag, nation_name)

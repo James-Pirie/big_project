@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2ee9e35f-e61c-4292-8680-4b08011d2cbf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/country_tags/00_countries.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/country_tags/00_countries.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_data/Test2/common/colors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_data/Test2/common/countries/Russia.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_data/Test2/descriptop.mod" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +30,19 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/history/states" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/history" />
+      <recent name="$PROJECT_DIR$/user_data/Test2/history" />
+      <recent name="$PROJECT_DIR$/user_data/Test2/history/states" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/history/states" />
+      <recent name="$PROJECT_DIR$/data" />
       <recent name="C:\Users\James Pirie\PycharmProjects\big_project\data" />
     </key>
   </component>
@@ -127,6 +131,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="432" y="306" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598408731738">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state x="432" y="306" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.946@0.23.1680.946" timestamp="1598408731738" />
     <state x="578" y="250" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598072836849">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
@@ -135,22 +143,26 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="543" y="110" key="#create_a_nation/0.23.1680.946@0.23.1680.946" timestamp="1598060103884" />
-    <state width="1659" height="214" key="GridCell.Tab.0.bottom" timestamp="1598403364153">
+    <state width="1659" height="214" key="GridCell.Tab.0.bottom" timestamp="1598430487748">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="214" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1598403364153" />
-    <state width="1659" height="214" key="GridCell.Tab.0.center" timestamp="1598403364152">
+    <state width="1659" height="214" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1598430487748" />
+    <state width="1659" height="214" key="GridCell.Tab.0.bottom/0.23.1680.947@0.23.1680.947" timestamp="1598422290268" />
+    <state width="1659" height="214" key="GridCell.Tab.0.center" timestamp="1598430487747">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="214" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1598403364152" />
-    <state width="1659" height="214" key="GridCell.Tab.0.left" timestamp="1598403364152">
+    <state width="1659" height="214" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1598430487747" />
+    <state width="1659" height="214" key="GridCell.Tab.0.center/0.23.1680.947@0.23.1680.947" timestamp="1598422290266" />
+    <state width="1659" height="214" key="GridCell.Tab.0.left" timestamp="1598430487746">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="214" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1598403364152" />
-    <state width="1659" height="214" key="GridCell.Tab.0.right" timestamp="1598403364153">
+    <state width="1659" height="214" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1598430487746" />
+    <state width="1659" height="214" key="GridCell.Tab.0.left/0.23.1680.947@0.23.1680.947" timestamp="1598422290265" />
+    <state width="1659" height="214" key="GridCell.Tab.0.right" timestamp="1598430487747">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="214" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1598403364153" />
+    <state width="1659" height="214" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1598430487747" />
+    <state width="1659" height="214" key="GridCell.Tab.0.right/0.23.1680.947@0.23.1680.947" timestamp="1598422290267" />
     <state x="371" y="135" key="SettingsEditor" timestamp="1598060123100">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
@@ -159,16 +171,5 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="478" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.946@0.23.1680.946" timestamp="1597979930141" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/script.py</url>
-          <line>41</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
