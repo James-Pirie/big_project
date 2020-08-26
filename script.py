@@ -31,8 +31,8 @@ tags={tags_formatted}
 name="{mod_name}"
 supported_version="{game_version}" """
 
-    os.mkdir(f"user_data/{mod_name}")  # create the mod file
     os.makedirs(f"user_data/{mod_name}/common/countries")
+    os.mkdir(f"user_data/{mod_name}/common/country_tags")
     descriptor_file = open(f"user_data/{mod_name}/descriptop.mod", "w+")  # create the descriptor file
     descriptor_file.write(descriptor_template)  # write the content to the file
     descriptor_file.close()
@@ -62,7 +62,7 @@ def assign_nation_color(mod_name, tag, rgb):
         list_of_existing_tags_formatted = []
         previous_line = None
         every_line_in_colors = colors_content.split("\n")
-        new_colors_file = open(f"user_data/{mod_name}/common/colors2.txt", "w+")
+        new_colors_file = open(f"user_data/{mod_name}/common/country_tags/colors2.txt", "w+")
         f = 0
 
         while f < len(list_of_existing_tags):
@@ -76,7 +76,6 @@ def assign_nation_color(mod_name, tag, rgb):
                     break
             for i in range(len(every_line_in_colors)):
                 if i >= 1 and previous_line.strip() == every_line_in_colors[i].strip():
-                    print(previous_line + " v " + every_line_in_colors[i - 1])
                     del every_line_in_colors[i - 1]
 
                     break
@@ -86,17 +85,51 @@ def assign_nation_color(mod_name, tag, rgb):
             new_colors_file.write(new_tag_insert[i] + "\n")
         for i in range(len(every_line_in_colors)):
             new_colors_file.write(every_line_in_colors[i] + "\n")
-        new_colors_file.close()
         os.remove(f"user_data/{mod_name}/common/colors.txt")
         os.rename(f"user_data/{mod_name}/common/colors2.txt", f"user_data/{mod_name}/common/colors.txt")
-        print(every_line_in_colors)
 
     else:
         colour_file_template = open(f"data/colors.txt").read()
-        new_colors_file = open(f"user_data/{mod_name}/common/colors.txt", "w+")
+        new_colors_file = open(f"user_data/{mod_name}/common/country_tags/colors.txt", "w+")
         for i in range(len(new_tag_insert)):
             new_colors_file.write(new_tag_insert[i] + "\n")
         new_colors_file.write(colour_file_template)
+    new_colors_file.close()
+
+
+def assign_nation_tag(mod_name, tag, country_name):
+    template = f'{tag} = "countries/{country_name}.txt"'
+    if os.path.isfile(f"user_data/{mod_name}/common/country_tags/00_countries.txt"):
+        countries_file = open(f"user_data/{mod_name}/common/country_tags/00_countries.txt", "r")
+        replacement_countries_file = open(f"user_data/{mod_name}/common/country_tags/00_countries2.txt", "w+")
+        original_countries_file_contents = countries_file.read()
+        every_line_in_countries_file = original_countries_file_contents.split("\n")
+        list_of_tags_in_file = []
+        for i in range(len(every_line_in_countries_file)):
+            current_line = every_line_in_countries_file[i]
+            list_of_tags_in_file.append(current_line.split(" =")[0])
+        if tag in list_of_tags_in_file:
+            for i in range(len(every_line_in_countries_file)):
+                every_word_on_current_line = every_line_in_countries_file[i].split()
+                if tag in every_word_on_current_line:
+                    del every_line_in_countries_file[i]
+                    print(every_line_in_countries_file)
+                    break
+        every_line_in_countries_file.append(template)
+        for z in range(len(every_line_in_countries_file)):
+            if every_line_in_countries_file[z] != "":
+                replacement_countries_file.write(every_line_in_countries_file[z] + "\n")
+        os.remove(f"user_data/{mod_name}/common/country_tags/00_countries.txt")
+        os.rename(f"user_data/{mod_name}/common/country_tags/00_countries2.txt",
+                  f"user_data/{mod_name}/common/country_tags/00_countries.txt")
+
+    else:
+        original_countries_file_data = open("data/country_tags/00_countries.txt", "r")
+        new_countries_file_template = original_countries_file_data.read()
+        country_tag_file = open(f"user_data/{mod_name}/common/country_tags/00_countries.txt", "w+")
+        country_tag_file.write(template + "\n")
+        country_tag_file.write(new_countries_file_template)
+
 
 
 
