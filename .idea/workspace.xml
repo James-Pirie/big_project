@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ee9e35f-e61c-4292-8680-4b08011d2cbf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/history/countries/1939_policies.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/history/countries/1939_politics.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/history/countries/1939_template.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/history/countries/politics.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/history/countries/tech_and_convoys.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/localisation/countries_l_english.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/template.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/test.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_flags/JOE_democratic.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Test2/common/countries/Bikini Bottom.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Test2/common/country_tags/00_countries.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Test2/common/country_tags/colors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Test2/descriptop.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Test2/history/countries/BKB - Bikini Bottom.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/history/countries/policies.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,16 +45,20 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/history/states" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/localisation" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/data/history" />
-      <recent name="$PROJECT_DIR$/user_data/Test2/history" />
-      <recent name="$PROJECT_DIR$/user_data/Test2/history/states" />
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/user_portraits" />
+      <recent name="$PROJECT_DIR$/data/localisation" />
+      <recent name="$PROJECT_DIR$/data/localisation_correct" />
+      <recent name="$PROJECT_DIR$/data/localization" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/localisation" />
+      <recent name="$PROJECT_DIR$/user_portraits" />
       <recent name="$PROJECT_DIR$/data/history/states" />
       <recent name="$PROJECT_DIR$/data" />
       <recent name="C:\Users\James Pirie\PycharmProjects\big_project\data" />
@@ -131,10 +149,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="432" y="306" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598408731738">
+    <state x="432" y="306" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598686361183">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state x="432" y="306" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.946@0.23.1680.946" timestamp="1598408731738" />
+    <state x="432" y="306" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.946@0.23.1680.946" timestamp="1598686361183" />
     <state x="578" y="250" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598072836849">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
@@ -143,25 +161,25 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="543" y="110" key="#create_a_nation/0.23.1680.946@0.23.1680.946" timestamp="1598060103884" />
-    <state width="1659" height="214" key="GridCell.Tab.0.bottom" timestamp="1598430487748">
+    <state width="1659" height="260" key="GridCell.Tab.0.bottom" timestamp="1598773427709">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="214" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1598430487748" />
+    <state width="1659" height="260" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1598773427709" />
     <state width="1659" height="214" key="GridCell.Tab.0.bottom/0.23.1680.947@0.23.1680.947" timestamp="1598422290268" />
-    <state width="1659" height="214" key="GridCell.Tab.0.center" timestamp="1598430487747">
+    <state width="1659" height="260" key="GridCell.Tab.0.center" timestamp="1598773427708">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="214" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1598430487747" />
+    <state width="1659" height="260" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1598773427708" />
     <state width="1659" height="214" key="GridCell.Tab.0.center/0.23.1680.947@0.23.1680.947" timestamp="1598422290266" />
-    <state width="1659" height="214" key="GridCell.Tab.0.left" timestamp="1598430487746">
+    <state width="1659" height="260" key="GridCell.Tab.0.left" timestamp="1598773427708">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="214" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1598430487746" />
+    <state width="1659" height="260" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1598773427708" />
     <state width="1659" height="214" key="GridCell.Tab.0.left/0.23.1680.947@0.23.1680.947" timestamp="1598422290265" />
-    <state width="1659" height="214" key="GridCell.Tab.0.right" timestamp="1598430487747">
+    <state width="1659" height="260" key="GridCell.Tab.0.right" timestamp="1598773427708">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="214" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1598430487747" />
+    <state width="1659" height="260" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1598773427708" />
     <state width="1659" height="214" key="GridCell.Tab.0.right/0.23.1680.947@0.23.1680.947" timestamp="1598422290267" />
     <state x="371" y="135" key="SettingsEditor" timestamp="1598060123100">
       <screen x="0" y="23" width="1680" height="946" />
@@ -171,5 +189,25 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="478" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.946@0.23.1680.946" timestamp="1597979930141" />
+    <state x="505" y="230" width="670" height="676" key="search.everywhere.popup" timestamp="1598767213358">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state x="505" y="230" width="670" height="676" key="search.everywhere.popup/0.23.1680.946@0.23.1680.946" timestamp="1598767213358" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/script.py</url>
+          <line>192</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/script.py</url>
+          <line>150</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
