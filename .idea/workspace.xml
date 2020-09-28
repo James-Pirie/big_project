@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ee9e35f-e61c-4292-8680-4b08011d2cbf" name="Default Changelist" comment="" />
+    <list default="true" id="2ee9e35f-e61c-4292-8680-4b08011d2cbf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/user_flags/git_holder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/template.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/test.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_flags/JOE_democratic.png" beforeDir="false" afterPath="$PROJECT_DIR$/user_flags/JOE_democratic.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,23 +35,23 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/localisation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/user_portraits" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/data" />
-      <recent name="$PROJECT_DIR$/user_portraits" />
-      <recent name="$PROJECT_DIR$/data/localisation" />
-      <recent name="$PROJECT_DIR$/data/localisation_correct" />
-      <recent name="$PROJECT_DIR$/data/localization" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/data_processing/user_portraits" />
       <recent name="$PROJECT_DIR$/data/localisation" />
       <recent name="$PROJECT_DIR$/user_portraits" />
       <recent name="$PROJECT_DIR$/data/history/states" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/user_portraits" />
+      <recent name="$PROJECT_DIR$/data_processing/user_flags" />
+      <recent name="$PROJECT_DIR$/data_processing/user_portraits" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/data" />
-      <recent name="C:\Users\James Pirie\PycharmProjects\big_project\data" />
     </key>
   </component>
   <component name="RunManager" selected="Python.script">
@@ -125,7 +132,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -144,34 +153,43 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="543" y="110" key="#create_a_nation/0.23.1680.946@0.23.1680.946" timestamp="1598060103884" />
-    <state width="1659" height="260" key="GridCell.Tab.0.bottom" timestamp="1598773427709">
+    <state width="1659" height="260" key="GridCell.Tab.0.bottom" timestamp="1601275776493">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="260" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1598773427709" />
+    <state width="1659" height="260" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1601275776493" />
     <state width="1659" height="214" key="GridCell.Tab.0.bottom/0.23.1680.947@0.23.1680.947" timestamp="1598422290268" />
-    <state width="1659" height="260" key="GridCell.Tab.0.center" timestamp="1598773427708">
+    <state width="1659" height="260" key="GridCell.Tab.0.bottom/0.23.1680.949@0.23.1680.949" timestamp="1599709485964" />
+    <state width="1659" height="260" key="GridCell.Tab.0.center" timestamp="1601275776492">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="260" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1598773427708" />
+    <state width="1659" height="260" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1601275776492" />
     <state width="1659" height="214" key="GridCell.Tab.0.center/0.23.1680.947@0.23.1680.947" timestamp="1598422290266" />
-    <state width="1659" height="260" key="GridCell.Tab.0.left" timestamp="1598773427708">
+    <state width="1659" height="260" key="GridCell.Tab.0.center/0.23.1680.949@0.23.1680.949" timestamp="1599709485962" />
+    <state width="1659" height="260" key="GridCell.Tab.0.left" timestamp="1601275776492">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="260" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1598773427708" />
+    <state width="1659" height="260" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1601275776492" />
     <state width="1659" height="214" key="GridCell.Tab.0.left/0.23.1680.947@0.23.1680.947" timestamp="1598422290265" />
-    <state width="1659" height="260" key="GridCell.Tab.0.right" timestamp="1598773427708">
+    <state width="1659" height="260" key="GridCell.Tab.0.left/0.23.1680.949@0.23.1680.949" timestamp="1599709485962" />
+    <state width="1659" height="260" key="GridCell.Tab.0.right" timestamp="1601275776493">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state width="1659" height="260" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1598773427708" />
+    <state width="1659" height="260" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1601275776493" />
     <state width="1659" height="214" key="GridCell.Tab.0.right/0.23.1680.947@0.23.1680.947" timestamp="1598422290267" />
+    <state width="1659" height="260" key="GridCell.Tab.0.right/0.23.1680.949@0.23.1680.949" timestamp="1599709485963" />
     <state x="371" y="135" key="SettingsEditor" timestamp="1598060123100">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="371" y="135" key="SettingsEditor/0.23.1680.946@0.23.1680.946" timestamp="1598060123100" />
-    <state x="478" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1597979930141">
+    <state x="478" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1600814036761">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
-    <state x="478" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.946@0.23.1680.946" timestamp="1597979930141" />
+    <state x="478" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.946@0.23.1680.946" timestamp="1600814036761" />
+    <state x="478" y="328" key="com.intellij.ide.util.TipDialog/0.23.1680.947@0.23.1680.947" timestamp="1599879734756" />
+    <state x="530" y="152" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601253079535">
+      <screen x="0" y="23" width="1680" height="946" />
+    </state>
+    <state x="530" y="152" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1680.946@0.23.1680.946" timestamp="1601253079535" />
     <state x="505" y="230" width="670" height="676" key="search.everywhere.popup" timestamp="1598767213358">
       <screen x="0" y="23" width="1680" height="946" />
     </state>
@@ -182,13 +200,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/script.py</url>
-          <line>193</line>
-          <option name="timeStamp" value="69" />
+          <line>264</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/script.py</url>
-          <line>151</line>
-          <option name="timeStamp" value="89" />
+          <line>91</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

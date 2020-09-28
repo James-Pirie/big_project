@@ -1,0 +1,5 @@
+
+
+graphical_culture = middle_eastern_)gfx
+graphical_culture_2d = middle_eastern_)2d
+color = { 021 686 394 } #

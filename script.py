@@ -1,6 +1,5 @@
 import os
 from PIL import Image
-import shutil
 
 """It is important that the functions are run in the order they are written, some rely on previously created files"""
 
@@ -35,16 +34,21 @@ def create_a_mod_file(mod_name, mod_tags: list, game_version, mod_version, path_
 tags={tags_formatted}
 name="{mod_name}"
 supported_version="{game_version}" """
-    mod_file_template = r"data/template.mod"
-    mod_file_new = f"user_data/template.mod"
-    shutil.copyfile(mod_file_template, mod_file_new)
-    mod_file = open(f"user_data/template.mod")
-    mod_file.write(descriptor_template + f'\npath = "{path_to_documents}/Paradox Interactive/Hearts of Iron IV/mod/test"')
     os.makedirs(f"user_data/{mod_name}/common/countries")
     os.mkdir(f"user_data/{mod_name}/common/country_tags")
     descriptor_file = open(f"user_data/{mod_name}/descriptor.mod", "w+")  # create the descriptor file
     descriptor_file.write(descriptor_template)  # write the content to the file
     descriptor_file.close()
+    # create the .mod file
+    dot_mod_template = [f'version="{mod_version}"', 'tags={', '}', f'name="{mod_name}"', f'supported_version="{game_version}"', f'path="{path_to_documents}/Paradox Interactive/Hearts of Iron IV/mod/test"']
+    for i in range(len(mod_tags)):
+        dot_mod_template.insert(2, f"\t{mod_tags[i]}")
+    new_mod_file = open(f"user_data/{mod_name}.txt", "w+")
+    for i in range(len(dot_mod_template)):
+        print(dot_mod_template[i])
+        new_mod_file.write(dot_mod_template[i] + "\n")
+
+    os.rename(f"user_data/{mod_name}.txt", f"user_data/{mod_name}.mod")
 
 
 def create_new_nation(mod_name, country_name, gfx, rgb_value):
@@ -276,8 +280,6 @@ def set_politics(mod_name, country_name, country_tag, ruling_ideology, game_star
         if looker in every_line_in_template[i].split():
             for c in range(len(government)):
                 every_line_in_template.insert(i + 1, f"{indentation}{government[c]}")
-    for i in range(len(every_line_in_template)):
-        print(every_line_in_template[i])
     original_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt", "r")
     original_content = original_file.read()
     every_line_in_original = original_content.split("\n")
@@ -387,3 +389,26 @@ def localisation(mod_name, country_tag, country_name, country_name_f, country_na
     for i in range(len(every_line_in_localisation)):
         new_localisation_file.write(every_line_in_localisation[i] + "\n")
 
+
+create_a_mod_file("test", ["Events"], "1.9.3", "1",
+                  "C:/Users/James Pirie/Documents")
+create_new_nation("test", "Republic of Joe", f"{list_of_cultures[0]})", "{ 021 686 394 }")
+assign_nation_tag("test", "JOE", "Republic of Joe")
+assign_nation_color("test", "JOE", "{ 021 686 394 }")
+create_history_file("test", "JOE", "Republic of Joe")
+set_nation_capital("test", "JOE", "Republic of Joe", "284")
+assign_nation_states("test", "JOE", ["284", "723", "635", "636", "734", "643", "523", "521", "285", "517", "518"],
+                     True, True)
+set_tech_and_convoys("test", "JOE", "Republic of Joe", [], "125")
+set_1939_start("test", "JOE", "Republic of Joe")
+set_politics("test", "Republic of Joe", "JOE", "democratic", True)
+set_political_popularity("test", "Republic of Joe", "JOE", {"democratic": 100, "fascism": 0, "communism": 0,
+                                                            "neutrality": 0}, True)
+set_politics("test", "Republic of Joe", "JOE", "democratic", False)
+set_political_popularity("test", "Republic of Joe", "JOE", {"democratic": 100, "fascism": 0, "communism": 0,
+                                                            "neutrality": 0}, False)
+create_new_leader("test", "JOE", "Republic of Joe", "Joe Supreme", "liberalism")
+assign_leader_portrait("test", "JOE", "Joe Supreme")
+set_country_flag("test", "JOE", "democratic")
+localisation("test", "JOE", "Republic of Joe", "State of Joe", "Peoples Republic of Joe", "Republic of Joe",
+             "Kingdom of Joe")
