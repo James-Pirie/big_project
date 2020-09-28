@@ -394,6 +394,7 @@ def localisation(mod_name, country_tag, country_name, country_name_f, country_na
 # ideologies = democratic fascism communism and neutrality
 # also place four images in /user_portraits, {leader_name}.png, one for each leader of each ideology
 mod_name = ""
+location_of_documents_folder = ""
 country_name = ""
 country_name_fascist = ""
 country_name_democratic = ""
@@ -413,7 +414,7 @@ culture = ""  # eg: western_european_
 political_party_pie = {"democratic": 0, "fascism": 0, "communism": 0, "neutrality": 0}
 
 create_a_mod_file(mod_name, ["Events"], "1.9.3", "1",
-                  "C:/Users/James Pirie/Documents")
+                  location_of_documents_folder)
 create_new_nation(mod_name, country_name, culture, colour)
 assign_nation_tag(mod_name, country_tag, country_name)
 assign_nation_color(mod_name, country_tag, colour)
