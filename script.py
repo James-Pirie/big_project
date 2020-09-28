@@ -390,25 +390,54 @@ def localisation(mod_name, country_tag, country_name, country_name_f, country_na
         new_localisation_file.write(every_line_in_localisation[i] + "\n")
 
 
-create_a_mod_file("test", ["Events"], "1.9.3", "1",
+# READ READ !!!: Place four images in user_flags/, {country_tag}_democratic.png, one for each ideology
+# ideologies = democratic fascism communism and neutrality
+# also place four images in /user_portraits, {leader_name}.png, one for each leader of each ideology
+mod_name = ""
+country_name = ""
+country_name_fascist = ""
+country_name_democratic = ""
+country_name_communist = ""
+country_name_neutral = ""
+country_tag = ""
+ruling_ideology = ""  # eg democratic
+leader_name_d = ""
+leader_name_c = ""
+leader_name_n = ""
+leader_name_f = ""
+list_of_territory = []  # eg: 234, 12, 42, 123
+colour = ""  # eg: { 123 456 789 }
+capital = ""  # eg 421
+number_of_convoys = ""
+culture = ""  # eg: western_european_
+political_party_pie = {"democratic": 0, "fascism": 0, "communism": 0, "neutrality": 0}
+
+create_a_mod_file(mod_name, ["Events"], "1.9.3", "1",
                   "C:/Users/James Pirie/Documents")
-create_new_nation("test", "Republic of Joe", f"{list_of_cultures[0]})", "{ 021 686 394 }")
-assign_nation_tag("test", "JOE", "Republic of Joe")
-assign_nation_color("test", "JOE", "{ 021 686 394 }")
-create_history_file("test", "JOE", "Republic of Joe")
-set_nation_capital("test", "JOE", "Republic of Joe", "284")
-assign_nation_states("test", "JOE", ["284", "723", "635", "636", "734", "643", "523", "521", "285", "517", "518"],
+create_new_nation(mod_name, country_name, culture, colour)
+assign_nation_tag(mod_name, country_tag, country_name)
+assign_nation_color(mod_name, country_tag, colour)
+create_history_file(mod_name, country_tag, country_name)
+set_nation_capital(mod_name, country_tag, country_name, capital)
+assign_nation_states(mod_name, country_tag, list_of_territory,
                      True, True)
-set_tech_and_convoys("test", "JOE", "Republic of Joe", [], "125")
-set_1939_start("test", "JOE", "Republic of Joe")
-set_politics("test", "Republic of Joe", "JOE", "democratic", True)
-set_political_popularity("test", "Republic of Joe", "JOE", {"democratic": 100, "fascism": 0, "communism": 0,
-                                                            "neutrality": 0}, True)
-set_politics("test", "Republic of Joe", "JOE", "democratic", False)
-set_political_popularity("test", "Republic of Joe", "JOE", {"democratic": 100, "fascism": 0, "communism": 0,
-                                                            "neutrality": 0}, False)
-create_new_leader("test", "JOE", "Republic of Joe", "Joe Supreme", "liberalism")
-assign_leader_portrait("test", "JOE", "Joe Supreme")
-set_country_flag("test", "JOE", "democratic")
-localisation("test", "JOE", "Republic of Joe", "State of Joe", "Peoples Republic of Joe", "Republic of Joe",
-             "Kingdom of Joe")
+set_tech_and_convoys(mod_name, country_tag, country_name, [], number_of_convoys)
+set_1939_start(mod_name, country_tag, country_name)
+set_politics(mod_name, country_name, country_tag, ruling_ideology, True)
+set_political_popularity(mod_name, country_name, country_tag, political_party_pie, True)
+set_politics(mod_name, country_name, country_tag, ruling_ideology, False)
+set_political_popularity(mod_name, country_name, country_tag, political_party_pie, False)
+create_new_leader(mod_name, country_tag, country_name, leader_name_d, "liberalism") # democratic leader
+assign_leader_portrait(mod_name, country_tag, leader_name_d)
+create_new_leader(mod_name, country_tag, country_name, leader_name_n, "despotism") # neutral leader
+assign_leader_portrait(mod_name, country_tag, leader_name_n)
+create_new_leader(mod_name, country_tag, country_name, leader_name_c, "stalinism") # communist leader
+assign_leader_portrait(mod_name, country_tag, leader_name_c)
+create_new_leader(mod_name, country_tag, country_name, leader_name_f, "nazism") # fascist leader
+assign_leader_portrait(mod_name, country_tag, leader_name_f)
+set_country_flag(mod_name, country_tag, "democratic")
+set_country_flag(mod_name, country_tag, "fascism")
+set_country_flag(mod_name, country_tag, "communism")
+set_country_flag(mod_name, country_tag, "neutrality")
+localisation(mod_name, country_tag, country_name, country_name_fascist, country_name_communist, country_name_democratic,
+             country_name_neutral)
