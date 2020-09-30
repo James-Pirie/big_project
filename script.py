@@ -45,9 +45,9 @@ supported_version="{game_version}" """
         dot_mod_template.insert(2, f"\t{mod_tags[i]}")
     new_mod_file = open(f"user_data/{mod_name}.txt", "w+")
     for i in range(len(dot_mod_template)):
-        print(dot_mod_template[i])
         new_mod_file.write(dot_mod_template[i] + "\n")
-
+    descriptor_file.close()
+    new_mod_file.close()
     os.rename(f"user_data/{mod_name}.txt", f"user_data/{mod_name}.mod")
 
 
@@ -84,6 +84,8 @@ def assign_nation_tag(mod_name, tag, country_name):
         for z in range(len(every_line_in_countries_file)):
             if every_line_in_countries_file[z] != "":
                 replacement_countries_file.write(every_line_in_countries_file[z] + "\n")
+        countries_file.close()
+        replacement_countries_file.close()
         os.remove(f"user_data/{mod_name}/common/country_tags/00_countries.txt")
         os.rename(f"user_data/{mod_name}/common/country_tags/00_countries2.txt",
                   f"user_data/{mod_name}/common/country_tags/00_countries.txt")
@@ -94,6 +96,8 @@ def assign_nation_tag(mod_name, tag, country_name):
         country_tag_file = open(f"user_data/{mod_name}/common/country_tags/00_countries.txt", "w+")
         country_tag_file.write(template + "\n")
         country_tag_file.write(new_countries_file_template)
+        country_tag_file.close()
+        original_countries_file_data.close()
 
 
 def assign_nation_color(mod_name, tag, rgb):
@@ -131,6 +135,8 @@ def assign_nation_color(mod_name, tag, rgb):
             new_colors_file.write(new_tag_insert[i] + "\n")
         for i in range(len(every_line_in_colors)):
             new_colors_file.write(every_line_in_colors[i] + "\n")
+        original_colour_file.close()
+        new_colors_file.close()
         os.remove(f"user_data/{mod_name}/common/colors.txt")
         os.rename(f"user_data/{mod_name}/common/colors2.txt", f"user_data/{mod_name}/common/colors.txt")
 
@@ -140,7 +146,7 @@ def assign_nation_color(mod_name, tag, rgb):
         for i in range(len(new_tag_insert)):
             new_colors_file.write(new_tag_insert[i] + "\n")
         new_colors_file.write(colour_file_template)
-    new_colors_file.close()
+        new_colors_file.close()
 
 
 def create_history_file(mod_name, tag, country_name):
@@ -163,8 +169,10 @@ def set_nation_capital(mod_name, country_tag, country_name, country_capital):
     os.remove(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
     new_country_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt", "w+")
     ever_line_in_file.append("\n")
+    del ever_line_in_file[1]
     for i in range(len(ever_line_in_file)):
-        new_country_file.write(ever_line_in_file[i])
+        new_country_file.write(ever_line_in_file[i] + "\n")
+    new_country_file.close()
 
 
 def assign_nation_states(mod_name, country_tag, desired_territory: list, core: bool, controls: bool):
@@ -178,6 +186,7 @@ def assign_nation_states(mod_name, country_tag, desired_territory: list, core: b
         state_file_index = list_of_state_tags.index(desired_territory[v])
         template_file = open(f"data/history/states/{list_of_state_files[state_file_index]}", "r")
         template = template_file.read()
+        template_file.close()
         every_line_in_template = template.split("\n")
         core_counter = 0
         for i in range(len(every_line_in_template)):
@@ -186,15 +195,23 @@ def assign_nation_states(mod_name, country_tag, desired_territory: list, core: b
             elif core and "add_core_of" in every_line_in_template[i].split() and core_counter == 0:
                 every_line_in_template.insert(i, core_template)
                 core_counter += 1
-        if os.path.isfile(f"user_data/{mod_name}/history/states/{list_of_state_files[state_file_index]}"):
+        if os.path.isfile(f"user_data/{mod_name}/history/states/{list_of_state_files[state_file_index]}.txt"):
             os.remove(f"user_data/{mod_name}/history/states/{list_of_state_files[state_file_index]}")
-        state_file = open(f"user_data/{mod_name}/history/states/{list_of_state_files[state_file_index]}", "w+")
+        state_file = open(f"user_data/{mod_name}/history/states/{list_of_state_files[state_file_index]}", "x")
         for x in range(len(every_line_in_template)):
             state_file.write(every_line_in_template[x] + "\n")
         state_file.close()
 
 
-# fix the error where this duplicates if run more than once and every function below
+def remove_nation_state(mod_name, state_to_remove):
+    list_of_active_states = os.listdir(f"user_data/{mod_name}/history/states")
+    print(list_of_active_states)
+    for i in range(len(list_of_active_states)):
+        print()
+        if list_of_active_states[i].split("-")[0] == state_to_remove:
+            os.remove(f"user_data/{mod_name}/history/states/{list_of_active_states[i]}")
+
+
 def set_tech_and_convoys(mod_name, country_tag, country_name, starting_tech: list, convoys):
     user_data_template = ["# Starting tech", "set_technology = {", "}", "", f"set_convoys = {convoys}"]
     for i in range(len(starting_tech)):
@@ -202,13 +219,21 @@ def set_tech_and_convoys(mod_name, country_tag, country_name, starting_tech: lis
     history_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt", "r")
     history_file_content = history_file.read()
     every_line_in_history = history_file_content.split("\n")
-
-    for i in range(len(user_data_template)):
-        every_line_in_history.append(user_data_template[i])
-
+    history_file.close()
     new_history_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt", "w+")
     for i in range(len(every_line_in_history)):
-        new_history_file.write(every_line_in_history[i] + "\n")
+        if every_line_in_history[i].strip() == "# Starting tech":
+            while every_line_in_history[i].strip() != "create_country_leader = {":
+                del every_line_in_history[i]
+            for x in reversed(range(len(user_data_template))):
+                every_line_in_history.insert(i, user_data_template[x])
+            break
+    if "# Starting tech" not in every_line_in_history:
+        for x in range(len(user_data_template)):
+            every_line_in_history.append(user_data_template[x])
+    for x in range(len(every_line_in_history)):
+        new_history_file.write(every_line_in_history[x] + "\n")
+    new_history_file.close()
     os.remove(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
     os.rename(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt",
               f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
@@ -217,15 +242,18 @@ def set_tech_and_convoys(mod_name, country_tag, country_name, starting_tech: lis
 def set_1939_start(mod_name, country_tag, country_name):
     start_1939_file = open("data/history/countries/1939_template.txt", "r")
     start_1939_content = start_1939_file.read()
+    start_1939_file.close()
     every_line_in_1939_start = start_1939_content.split("\n")
     country_history_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt", "r")
     country_history_content = country_history_file.read()
+    country_history_file.close()
     every_line_in_history = country_history_content.split("\n")
     for i in range(len(every_line_in_1939_start)):
         every_line_in_history.append(every_line_in_1939_start[i])
     new_history_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt", "w+")
     for i in range(len(every_line_in_history)):
         new_history_file.write(every_line_in_history[i] + "\n")
+    new_history_file.close()
     os.remove(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
     os.rename(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt",
               f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
@@ -233,36 +261,47 @@ def set_1939_start(mod_name, country_tag, country_name):
 
 def set_political_popularity(mod_name, country_name, country_tag, ideology_popularity: dict, start_game):
     ideologies = ["democratic", "fascism", "communism", "neutrality"]
-    lookers = {"1939": "\tset_popularities = {", "1936": "set_popularities = {"}
     file_location = "data/history/countries/politics.txt"
-    time_period = "1936"
     indentation = "\t"
+    target = "set_popularities = {"
     if not start_game:
         file_location = "data/history/countries/1939_politics.txt"
-        time_period = "1939"
         indentation = "\t\t"
+        target = "\tset_popularities = {"
+    history_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt", "r")
+    history_content = history_file.read()
+    history_file.close()
+    every_line_in_history = history_content.split("\n")
 
     political_popularity_template = open(file_location)
     political_popularity_content = political_popularity_template.read()
+    political_popularity_template.close()
     every_line_in_file = political_popularity_content.split("\n")
-    for i in range(len(every_line_in_file)):
-        if every_line_in_file[i] == lookers[time_period]:
-            for c in range(len(ideologies)):
-                every_line_in_file.insert(i + 1, f"{indentation}{ideologies[c]} = {ideology_popularity[ideologies[c]]}")
-    history_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt", "r")
-    history_content = history_file.read()
-    every_line_in_history = history_content.split("\n")
-    new_history_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt", "w+")
-    for i in range(len(every_line_in_file)):
-        every_line_in_history.append(every_line_in_file[i])
+
+    for c in range(len(ideologies)):
+        every_line_in_file.insert(2, f"{indentation}{ideologies[c]} = {ideology_popularity[ideologies[c]]}")
     for i in range(len(every_line_in_history)):
-        new_history_file.write(every_line_in_history[i] + "\n")
+        if every_line_in_history[i] == target:
+            for z in range(len(every_line_in_file)):
+                del every_line_in_history[i]
+            for z in reversed(range(len(every_line_in_file))):
+                every_line_in_history.insert(i, every_line_in_file[z])
+            break
+
+    if target not in every_line_in_history:
+        for i in range(len(every_line_in_file)):
+            every_line_in_history.append(every_line_in_file[i])
+    new_history_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt", "w+")
+    for i in range(len(every_line_in_history)):
+        new_history_file.write("\n" + every_line_in_history[i])
+
+    new_history_file.close()
     os.remove(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
     os.rename(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt",
               f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
 
 
-def set_politics(mod_name, country_name, country_tag, ruling_ideology, game_start):
+def set_politics(mod_name, country_name, country_tag, ruling_ideology, game_start: bool):
     elections_allowed = "no"
     indentation = "\t\t"
     template_file = open("data/history/countries/1939_policies.txt")
@@ -274,20 +313,32 @@ def set_politics(mod_name, country_name, country_tag, ruling_ideology, game_star
     government = [f"ruling_party = {ruling_ideology}", 'last_election = "1936.1.1"', "election_frequency = 48",
                   f"elections_allowed = {elections_allowed}"]
     template_content = template_file.read()
+    template_file.close()
     every_line_in_template = template_content.split("\n")
     looker = "set_politics"
     for i in range(len(every_line_in_template)):
         if looker in every_line_in_template[i].split():
-            for c in range(len(government)):
+            for c in reversed(range(len(government))):
                 every_line_in_template.insert(i + 1, f"{indentation}{government[c]}")
+
     original_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt", "r")
     original_content = original_file.read()
+    original_file.close()
     every_line_in_original = original_content.split("\n")
-    for i in range(len(every_line_in_template)):
-        every_line_in_original.append(every_line_in_template[i])
     new_history = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt", "w+")
+    if every_line_in_template[0] in every_line_in_original:
+        for i in range(len(every_line_in_original)):
+            if every_line_in_original[i] == every_line_in_template[0]:
+                for x in range(len(every_line_in_template)):
+                    del every_line_in_original[i]
+                for x in reversed(range(len(every_line_in_template))):
+                    every_line_in_original.insert(i, every_line_in_template[x])
+    else:
+        for i in range(len(every_line_in_template)):
+            every_line_in_original.append(every_line_in_template[i])
     for i in range(len(every_line_in_original)):
         new_history.write(every_line_in_original[i] + "\n")
+    new_history.close()
     os.remove(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
     os.rename(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt",
               f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
@@ -300,13 +351,24 @@ def create_new_leader(mod_name, country_tag, country_name, leader_name, ideology
                 "\t}", "}", " "]
     original_file = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt", "r")
     original_content = original_file.read()
+    original_file.close()
     every_line_in_original = original_content.split("\n")
-    template.reverse()
-    for i in range(len(every_line_in_original)):
-        if "1939.1.1" in every_line_in_original[i].split():
-            for x in range(len(template)):
-                every_line_in_original.insert(i, template[x])
-            break
+    print(template)
+    if template[1] in every_line_in_original:
+        for i in range(len(every_line_in_original)):
+            if every_line_in_original[i] == template[0] and every_line_in_original[i + 1] == template[1]:
+
+                for x in range(len(template)):
+                    del every_line_in_original[i]
+                for x in reversed(range(len(template))):
+                    every_line_in_original.insert(i, template[x])
+    else:
+        template.reverse()
+        for i in range(len(every_line_in_original)):
+            if "1939.1.1" in every_line_in_original[i].split():
+                for x in range(len(template)):
+                    every_line_in_original.insert(i, template[x])
+                break
     os.remove(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}.txt")
     new_history = open(f"user_data/{mod_name}/history/countries/{country_tag} - {country_name}2.txt", "w+")
     for i in range(len(every_line_in_original)):
@@ -317,7 +379,10 @@ def create_new_leader(mod_name, country_tag, country_name, leader_name, ideology
 
 
 def assign_leader_portrait(mod_name, country_tag, leader_name):
-    os.makedirs(f"user_data/{mod_name}/gfx/leaders/{country_tag}")
+    if os.path.isfile(f"user_data/{mod_name}/gfx/leaders/{country_tag}/{leader_name}.dds"):
+        os.remove(f"user_data/{mod_name}/gfx/leaders/{country_tag}/{leader_name}.dds")
+    if not os.path.exists(f"user_data/{mod_name}/gfx/leaders/{country_tag}"):
+        os.makedirs(f"user_data/{mod_name}/gfx/leaders/{country_tag}")
     leader_portrait = Image.open(f"user_portraits/{leader_name}.png")
     new_height = 210
     new_width = 156
@@ -327,9 +392,16 @@ def assign_leader_portrait(mod_name, country_tag, leader_name):
 
 
 def set_country_flag(mod_name, country_tag, ideology):
-    if not os.path.isfile(f"user_data/{mod_name}/gfx/flags"):
-        os.makedirs(f"user_data/{mod_name}/gfx/flags/medium")
+    if not os.path.isdir(f"user_data/{mod_name}/gfx/flags"):
+        os.mkdir(f"user_data/{mod_name}/gfx/flags")
+    if not os.path.isdir(f"user_data/{mod_name}/gfx/flags/medium"):
+        os.mkdir(f"user_data/{mod_name}/gfx/flags/medium")
+    if not os.path.isdir(f"user_data/{mod_name}/gfx/flags/small"):
         os.mkdir(f"user_data/{mod_name}/gfx/flags/small")
+    elif os.path.isfile(f"user_data/{mod_name}/gfx/flags/{country_tag}_{ideology}.tga"):
+        os.remove(f"user_data/{mod_name}/gfx/flags/{country_tag}_{ideology}.tga")
+        os.remove(f"user_data/{mod_name}/gfx/flags/medium/{country_tag}_{ideology}.tga")
+        os.remove(f"user_data/{mod_name}/gfx/flags/small/{country_tag}_{ideology}.tga")
     leader_portrait = Image.open(f"user_flags/{country_tag}_{ideology}.png")
     standard_dimensions = {"height": 52, "width": 82}
     medium_dimensions = {"height": 26, "width": 41}
@@ -368,7 +440,8 @@ def localisation(mod_name, country_tag, country_name, country_name_f, country_na
         localisation_file_content = localisation_file_template.read()
         every_line_in_localisation = localisation_file_content.split("\n")
         for i in range(len(every_line_in_localisation)):
-            if every_line_in_localisation[i].strip() == f'{country_tag}_fascism:0 "{country_name_f}"':
+            print(every_line_in_localisation[i] + "=" + template[0])
+            if every_line_in_localisation[i].split("_")[0].strip() == country_tag:
                 for c in range(len(template)):
                     del every_line_in_localisation[i]
                 break
@@ -378,6 +451,7 @@ def localisation(mod_name, country_tag, country_name, country_name_f, country_na
         os.mkdir(f"user_data/{mod_name}/localisation")
         localisation_file_template = open(f"data/localisation/countries_l_english.yml", "r")
         localisation_file_content = localisation_file_template.read()
+        localisation_file_template.close()
         every_line_in_localisation = localisation_file_content.split("\n")
         for i in range(len(template)):
             every_line_in_localisation.append(template[i])
@@ -388,57 +462,63 @@ def localisation(mod_name, country_tag, country_name, country_name_f, country_na
     new_localisation_file = open(f"user_data/{mod_name}/localisation/countries_l_english.yml", "w+")
     for i in range(len(every_line_in_localisation)):
         new_localisation_file.write(every_line_in_localisation[i] + "\n")
+    new_localisation_file.close()
 
 
-# READ READ !!!: Place four images in user_flags/, {country_tag}_democratic.png, one for each ideology
-# ideologies = democratic fascism communism and neutrality
-# also place four images in /user_portraits, {leader_name}.png, one for each leader of each ideology
-mod_name = ""
-location_of_documents_folder = ""
-country_name = ""
-country_name_fascist = ""
-country_name_democratic = ""
-country_name_communist = ""
-country_name_neutral = ""
-country_tag = ""
-ruling_ideology = ""  # eg democratic
-leader_name_d = ""
-leader_name_c = ""
-leader_name_n = ""
-leader_name_f = ""
-list_of_territory = []  # eg: 234, 12, 42, 123
-colour = ""  # eg: { 123 456 789 }
-capital = ""  # eg 421
-number_of_convoys = ""
-culture = ""  # eg: western_european_
-political_party_pie = {"democratic": 0, "fascism": 0, "communism": 0, "neutrality": 0}
+# the testing zone
+if __name__ == '__main__':
+    # READ READ !!!: Place four images in user_flags/, {country_tag}_democratic.png, one for each ideology
+    # ideologies = democratic fascism communism and neutrality
+    # also place four images in /user_portraits, {leader_name}.png, one for each leader of each ideology
+    mod_name = "Dylan Mod"
+    location_of_documents_folder = r"C:/Users/James Pirie/Documents"  # eg: C:/Users/Documents
+    country_name = "Bad Poturonia"
+    country_name_fascist = "Bad Posture Reich"
+    country_name_democratic = "Bad Posture Federal Republic"
+    country_name_communist = "Bad Posture SSR"
+    country_name_neutral = "Kingdom of Bad Posture"
+    country_tag = "DYL"  # three letter country code
+    ruling_ideology = "fascism"  # eg democratic
+    leader_name_d = "President Dylan"  # make sure all leader names are different
+    leader_name_c = "Chairman Dylan"
+    leader_name_n = "King Dylan IV"
+    leader_name_f = "Normal Dylan"
+    list_of_territory = ["64", "62", "61", "63", "68", "66", "65", "86", "67", "85", "5", "763", "188", "762", "60", "59", "58"]  # eg: "234", "12", "42", "123"
+    colour = "{ 208 0 0 }"  # eg: { 123 456 789 }
+    capital = "64"  # eg 421
+    number_of_convoys = "238"
+    culture = "western_european_"  # eg: western_european_
+    political_party_pie = {"democratic": 25, "fascism": 25, "communism": 25, "neutrality": 25}
+    starting_tech = ["infantry_weapons = 1"]  # eg infantry_weapons = 1
 
-create_a_mod_file(mod_name, ["Events"], "1.9.3", "1",
-                  location_of_documents_folder)
-create_new_nation(mod_name, country_name, culture, colour)
-assign_nation_tag(mod_name, country_tag, country_name)
-assign_nation_color(mod_name, country_tag, colour)
-create_history_file(mod_name, country_tag, country_name)
-set_nation_capital(mod_name, country_tag, country_name, capital)
-assign_nation_states(mod_name, country_tag, list_of_territory,
-                     True, True)
-set_tech_and_convoys(mod_name, country_tag, country_name, [], number_of_convoys)
-set_1939_start(mod_name, country_tag, country_name)
-set_politics(mod_name, country_name, country_tag, ruling_ideology, True)
-set_political_popularity(mod_name, country_name, country_tag, political_party_pie, True)
-set_politics(mod_name, country_name, country_tag, ruling_ideology, False)
-set_political_popularity(mod_name, country_name, country_tag, political_party_pie, False)
-create_new_leader(mod_name, country_tag, country_name, leader_name_d, "liberalism") # democratic leader
-assign_leader_portrait(mod_name, country_tag, leader_name_d)
-create_new_leader(mod_name, country_tag, country_name, leader_name_n, "despotism") # neutral leader
-assign_leader_portrait(mod_name, country_tag, leader_name_n)
-create_new_leader(mod_name, country_tag, country_name, leader_name_c, "stalinism") # communist leader
-assign_leader_portrait(mod_name, country_tag, leader_name_c)
-create_new_leader(mod_name, country_tag, country_name, leader_name_f, "nazism") # fascist leader
-assign_leader_portrait(mod_name, country_tag, leader_name_f)
-set_country_flag(mod_name, country_tag, "democratic")
-set_country_flag(mod_name, country_tag, "fascism")
-set_country_flag(mod_name, country_tag, "communism")
-set_country_flag(mod_name, country_tag, "neutrality")
-localisation(mod_name, country_tag, country_name, country_name_fascist, country_name_communist, country_name_democratic,
-             country_name_neutral)
+    create_a_mod_file(mod_name, ["Events"], "1.9.3", "1",
+                      location_of_documents_folder)
+    create_new_nation(mod_name, country_name, culture, colour)
+    assign_nation_tag(mod_name, country_tag, country_name)
+    assign_nation_color(mod_name, country_tag, colour)
+    create_history_file(mod_name, country_tag, country_name)
+    set_nation_capital(mod_name, country_tag, country_name, capital)
+    assign_nation_states(mod_name, country_tag, list_of_territory,
+                         True, True)
+    set_tech_and_convoys(mod_name, country_tag, country_name, [], number_of_convoys)
+    set_1939_start(mod_name, country_tag, country_name)
+    set_politics(mod_name, country_name, country_tag, ruling_ideology, True)
+    set_political_popularity(mod_name, country_name, country_tag, political_party_pie, True)
+    set_politics(mod_name, country_name, country_tag, ruling_ideology, False)
+    set_political_popularity(mod_name, country_name, country_tag, political_party_pie, False)
+    create_new_leader(mod_name, country_tag, country_name, leader_name_d, "liberalism")  # democratic leader
+    assign_leader_portrait(mod_name, country_tag, leader_name_d)
+    create_new_leader(mod_name, country_tag, country_name, leader_name_n, "despotism")  # neutral leader
+    assign_leader_portrait(mod_name, country_tag, leader_name_n)
+    create_new_leader(mod_name, country_tag, country_name, leader_name_c, "stalinism")  # communist leader
+    assign_leader_portrait(mod_name, country_tag, leader_name_c)
+    create_new_leader(mod_name, country_tag, country_name, leader_name_f, "nazism")  # fascist leader
+    assign_leader_portrait(mod_name, country_tag, leader_name_f)
+    set_country_flag(mod_name, country_tag, "democratic")
+    set_country_flag(mod_name, country_tag, "fascism")
+    set_country_flag(mod_name, country_tag, "communism")
+    set_country_flag(mod_name, country_tag, "neutrality")
+    localisation(mod_name, country_tag, country_name, country_name_fascist, country_name_communist,
+                 country_name_democratic,
+                 country_name_neutral)
+
