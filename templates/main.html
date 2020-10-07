@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% for mod in mods  %}
+    <div class="container p-3 my-3 border">
+        <h1>{{ mod.Mod_Name }}</h1>
+        <p>{{ mod.Author }}</p>
+        <p>{{ mod.Tags }}</p>
+        <p>{{ mod.Upload_Date }}</p>
+    </div>
+    {% endfor %}
+{% endblock content %}
+
