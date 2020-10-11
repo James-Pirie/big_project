@@ -119,6 +119,21 @@
                     {% endif %}
                 </div>
 
+                <div class="form-group">
+                    {{ form.RGB_color.label(class="form-control-label") }}
+                    <h7 class="text-muted"> Example: 255 149 89 <a href="https://www.rapidtables.com/web/color/RGB_Color.html" target="_blank">Choose color here</a></h7>
+                    {% if form.RGB_color.errors %}
+                        {{ form.RGB_color(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.RGB_color.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.RGB_color(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}

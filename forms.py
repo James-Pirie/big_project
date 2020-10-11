@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileRequired
-from wtforms import StringField, SubmitField, SelectField, FileField
+from wtforms import StringField, SubmitField, SelectField, FileField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 
@@ -30,19 +30,23 @@ class Create_New_Country(FlaskForm):
                                                               ('culture', 'African'),
                                                               ('culture', 'Asian')],
                                   validators=[DataRequired()])
+    RGB_color = StringField("Red Color Value", validators=[DataRequired()])
     submit = SubmitField("Confirm", validators=[DataRequired()])
 
 
 class Set_Territory(FlaskForm):
     cored_owned = StringField("Owned Core Territory", validators=[DataRequired()])
+    nations_capital = StringField("Owned Core Territory", validators=[DataRequired(), Length(max=3)])
     cored_not_owned = StringField("Claimed Core Territory")
     occupied_not_owned = StringField("Owned Occupied Territory")
     submit = SubmitField("Confirm", validators=[DataRequired()])
 
 
 class Create_Leader(FlaskForm):
-    Leader_Name = StringField("Leader Name", validators=[DataRequired()])
-
+    Leader_Name_d = StringField("Democratic Leader Name", validators=[DataRequired()])
+    Leader_Name_f = StringField("Fascist Leader Name", validators=[DataRequired()])
+    Leader_Name_c = StringField("Communist Leader Name", validators=[DataRequired()])
+    Leader_Name_n = StringField("Non-Aligned Leader Name", validators=[DataRequired()])
     submit = SubmitField("Confirm", validators=[DataRequired()])
 
 

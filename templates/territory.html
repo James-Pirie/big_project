@@ -29,6 +29,22 @@
                 </div>
 
                 <div class="form-group">
+                    {{ form.nations_capital.label(class="form-control-label") }}
+                    <h7 class="text-muted"> Example: 126 42 432 2</h7>
+                    {% if form.nations_capital.errors %}
+                        {{ form.nations_capital(class="form-control form-control-lg is-invalid") }}
+                        <h7 class="text-muted"> Example: 126 42 432 2</h7>
+                        <div class="invalid-feedback">
+                            {% for error in form.nations_capital.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cored_owned(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
                     {{ form.cored_not_owned.label(class="form-control-label") }}
                     <h7 class="text-muted"> Example: 126 42 432 2</h7>
                     {% if form.cored_not_owned.errors %}

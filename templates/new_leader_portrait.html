@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+
+        <div class="container p-3 my-3 border">
+                <h2>{{ leader }}'s Portrait</h2>
+        <form enctype="multipart/form-data" action="/new-leader-portraits-{{ ideology_letter }}" method="post">
+                <input  type = "file" name="file_d"/>
+                <input type = "submit"/>
+        </form>
+        </div>
+
+
+{% endblock content %}
