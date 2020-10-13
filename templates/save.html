@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+<center>
+    <h3>Nation Added to Mod</h3>
+        <hr>
+            <input type="submit" name="open" value="Add Another Nation">
+            <input type="submit" name="close" value="Load Mod and Finish">
+</center>
+
+            {% for nation in nations  %}
+                <div class="container p-3 my-3 border">
+                    <h1>{{ nation.nation_name }}</h1>
+                </div>
+            {% endfor %}
+
+
+        </form>
+    </div>
+    <div class="border-top pt-3">
+    </div>
+{% endblock content %}

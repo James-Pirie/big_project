@@ -17,18 +17,19 @@ class Create_New_Country(FlaskForm):
     country_name_communist = StringField("Country Name Communist", validators=[DataRequired()])
     country_name_neutral = StringField("Country Name Non-Aligned", validators=[DataRequired()])
     country_tag = StringField("Country Tag", validators=[DataRequired(), Length(min=3, max=3)])
-    ruling_ideology = SelectField("Ruling Ideology", choices=[('ideology', 'Neutrality'),
-                                                              ('ideology', 'Fascism'),
-                                                              ('ideology', 'Communism'),
-                                                              ('ideology', 'Democratic')],
+
+    ruling_ideology = SelectField("Ruling Ideology", choices=[('neutrality', 'Neutrality'),
+                                                              ('fascism', 'Fascism'),
+                                                              ('communism', 'Communism'),
+                                                              ('democratic', 'Democratic')],
                                   validators=[DataRequired()])
-    culture = SelectField("Culture", choices=[('culture', 'Middle Eastern'),
-                                                              ('culture', 'Eastern European'),
-                                                              ('culture', 'South American'),
-                                                              ('culture', 'Commonwealth'),
-                                                              ('culture', 'Western European'),
-                                                              ('culture', 'African'),
-                                                              ('culture', 'Asian')],
+    culture = SelectField("Culture", choices=[('middle_eastern_', 'Middle Eastern'),
+                                                              ('eastern_european_', 'Eastern European'),
+                                                              ('southamerican_', 'South American'),
+                                                              ('commonwealth_', 'Commonwealth'),
+                                                              ('western_european_', 'Western European'),
+                                                              ('african_', 'African'),
+                                                              ('asian_', 'Asian')],
                                   validators=[DataRequired()])
     RGB_color = StringField("Red Color Value", validators=[DataRequired()])
     submit = SubmitField("Confirm", validators=[DataRequired()])
@@ -36,7 +37,7 @@ class Create_New_Country(FlaskForm):
 
 class Set_Territory(FlaskForm):
     cored_owned = StringField("Owned Core Territory", validators=[DataRequired()])
-    nations_capital = StringField("Owned Core Territory", validators=[DataRequired(), Length(max=3)])
+    nations_capital = StringField("Set Capital", validators=[Length(min=1, max=3)])
     cored_not_owned = StringField("Claimed Core Territory")
     occupied_not_owned = StringField("Owned Occupied Territory")
     submit = SubmitField("Confirm", validators=[DataRequired()])

@@ -25,7 +25,7 @@ supported_version="{game_version}" """
     descriptor_file.write(descriptor_template)  # write the content to the file
     descriptor_file.close()
     # create the .mod file
-    dot_mod_template = [f'version="{mod_version}"', 'tags={', '}', f'name="{mod_name}"', f'supported_version="{game_version}"', f'path="{path_to_documents}/Paradox Interactive/Hearts of Iron IV/mod/test"']
+    dot_mod_template = [f'version="{mod_version}"', 'tags={', '}', f'name="{mod_name}"', f'supported_version="{game_version}"', f'path="{path_to_documents}/Paradox Interactive/Hearts of Iron IV/mod/{mod_name}"']
     for i in range(len(mod_tags)):
         dot_mod_template.insert(2, f"\t{mod_tags[i]}")
     new_mod_file = open(f"user_data/{mod_name}.txt", "w+")
@@ -450,60 +450,6 @@ def localisation(mod_name, country_tag, country_name, country_name_f, country_na
     new_localisation_file.close()
 
 
-# the testing zone
-if __name__ == '__main__':
-    # READ READ !!!: Place four images in user_flags/, {country_tag}_democratic.png, one for each ideology
-    # ideologies = democratic fascism communism and neutrality
-    # also place four images in /user_portraits, {leader_name}.png, one for each leader of each ideology
-    mod_name = "Dylan Mod"
-    location_of_documents_folder = r"C:/Users/James Pirie/Documents"  # eg: C:/Users/Documents
-    country_name = "Bad Poturonia"
-    country_name_fascist = "Bad Posture Reich"
-    country_name_democratic = "Bad Posture Federal Republic"
-    country_name_communist = "Bad Posture SSR"
-    country_name_neutral = "Kingdom of Bad Posture"
-    country_tag = "DYL"  # three letter country code
-    ruling_ideology = "fascism"  # eg democratic
-    leader_name_d = "President Dylan"  # make sure all leader names are different
-    leader_name_c = "Chairman Dylan"
-    leader_name_n = "King Dylan IV"
-    leader_name_f = "Normal Dylan"
-    list_of_territory = ["64", "62", "61", "63", "68", "66", "65", "86", "67", "85", "5", "763", "188", "762", "60", "59", "58"]  # eg: "234", "12", "42", "123"
-    colour = "{ 208 0 0 }"  # eg: { 123 456 789 }
-    capital = "64"  # eg 421
-    number_of_convoys = "238"
-    culture = "western_european_"  # eg: western_european_
-    political_party_pie = {"democratic": 25, "fascism": 25, "communism": 25, "neutrality": 25}
-    starting_tech = ["infantry_weapons = 1"]  # eg infantry_weapons = 1
 
-    create_a_mod_file(mod_name, ["Events"], "1.9.3", "1",
-                      location_of_documents_folder)
-    create_new_nation(mod_name, country_name, culture, colour)
-    assign_nation_tag(mod_name, country_tag, country_name)
-    assign_nation_color(mod_name, country_tag, colour)
-    create_history_file(mod_name, country_tag, country_name)
-    set_nation_capital(mod_name, country_tag, country_name, capital)
-    assign_nation_states(mod_name, country_tag, list_of_territory,
-                         True, True)
-    set_tech_and_convoys(mod_name, country_tag, country_name, [], number_of_convoys)
-    set_1939_start(mod_name, country_tag, country_name)
-    set_politics(mod_name, country_name, country_tag, ruling_ideology, True)
-    set_political_popularity(mod_name, country_name, country_tag, political_party_pie, True)
-    set_politics(mod_name, country_name, country_tag, ruling_ideology, False)
-    set_political_popularity(mod_name, country_name, country_tag, political_party_pie, False)
-    create_new_leader(mod_name, country_tag, country_name, leader_name_d, "liberalism")  # democratic leader
-    assign_leader_portrait(mod_name, country_tag, leader_name_d)
-    create_new_leader(mod_name, country_tag, country_name, leader_name_n, "despotism")  # neutral leader
-    assign_leader_portrait(mod_name, country_tag, leader_name_n)
-    create_new_leader(mod_name, country_tag, country_name, leader_name_c, "stalinism")  # communist leader
-    assign_leader_portrait(mod_name, country_tag, leader_name_c)
-    create_new_leader(mod_name, country_tag, country_name, leader_name_f, "nazism")  # fascist leader
-    assign_leader_portrait(mod_name, country_tag, leader_name_f)
-    set_country_flag(mod_name, country_tag, "democratic")
-    set_country_flag(mod_name, country_tag, "fascism")
-    set_country_flag(mod_name, country_tag, "communism")
-    set_country_flag(mod_name, country_tag, "neutrality")
-    localisation(mod_name, country_tag, country_name, country_name_fascist, country_name_communist,
-                 country_name_democratic,
-                 country_name_neutral)
+
 

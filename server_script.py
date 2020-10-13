@@ -1,6 +1,10 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
 import forms
 import os
+import zipfile
+import urllib
+import webbrowser
+from script import *
 
 # all variables that the survey will process
 list_of_tags = ["AFG", "ALB", "ARG", "AST", "AUS", "BEL", "BHU", "BOL", "BRA", "MAL", "RAJ", "BUL", "CHL", "CHI", "COL",
@@ -17,11 +21,9 @@ list_of_tags = ["AFG", "ALB", "ARG", "AST", "AUS", "BEL", "BHU", "BOL", "BRA", "
                 "SER", "SIE", "SLO", "SOM", "SUD", "SRL", "SYR", "TZN", "TOG", "TUN", "UGA", "USB", "UAE", "VOL", "WLS",
                 "WGR", "COG", "ZAM", "ZIM"]
 
-list_of_cultures = ["middle_eastern_", "eastern_european_", "southamerican_", "commonwealth_",  "western_european_"
-                    "african_", "asian_"]
-
 mod_name = ""
 path = ""
+pie = {}
 list_of_countries = []
 country_tags = {}
 country_names_f = {}
@@ -61,7 +63,7 @@ def new_mod():
             return render_template("new_mod.html", title="New Mod", form=form, message=message)
         else:
             mod_name = form.mod_name.data
-            path = form.mod_name.data
+            path = form.path.data
             return redirect(url_for('new_country'))
     return render_template("new_mod.html", title="New Mod", form=form)
 
@@ -69,7 +71,7 @@ def new_mod():
 @app.route("/new-country", methods=["GET", "POST"])
 def new_country():
     global list_of_countries, country_tags, cultures, ruling_ideologies, current_country,\
-        country_names_c, country_names_d, country_names_f, country_names_n, country_color
+        country_names_c, country_names_d, country_names_f, country_names_n, country_color, pie
     form = forms.Create_New_Country()
 
     if form.validate_on_submit():
@@ -84,6 +86,9 @@ def new_country():
             else:
                 if int(rgb_list[i]) < 0 or int(rgb_list[i]) > 255:
                     out_of_bounds = True
+        if form.country_tag.data in list_of_tags:
+            message.append(flash("This tag already exists, please choose a unique one"))
+            errors = True
         if not_number:
             message.append(flash("Please ensure you have three RGB numerical values"))
             errors = True
@@ -101,10 +106,19 @@ def new_country():
             errors = True
         if not errors:
             list_of_countries.append(form.country_name.data)  # add to nation to the list
-            country_tags[form.country_name.data] = form.country_tag.data  # add the nations tag to the dict with name as key
+            country_tags[form.country_name.data] = form.country_tag.data
             current_country = form.country_name.data
             cultures[form.country_name.data] = form.culture.data
             ruling_ideologies[form.country_name.data] = form.ruling_ideology.data
+
+            ideologies = ["democratic", "fascism", "communism", "neutrality"]
+            print(ruling_ideologies[form.country_name.data])
+            for i in range(len(ideologies)):
+                if ideologies[i] == ruling_ideologies[form.country_name.data].lower():
+                    pie[ideologies[i]] = 70
+                else:
+                    pie[ideologies[i]] = 10
+            print(pie)
             country_names_n[form.country_name.data] = form.country_name_neutral.data  # non-aligned nation name
             country_names_f[form.country_name.data] = form.country_name_fascist.data  # fascist nation name
             country_names_c[form.country_name.data] = form.country_name_communist.data  # communist nation name
@@ -125,7 +139,7 @@ def set_territory():
 
         capital[current_country] = form.nations_capital.data.strip()
         cored_owned_territory[current_country] = form.cored_owned.data.split()
-        occupied_owned_territory[current_country] = form.occupied_not_owned.data.split()
+        occupied_owned_territory[current_country] = form.cored_not_owned.data.split()
         cored_not_owned_territory[current_country] = form.occupied_not_owned.data.split()
         return redirect(url_for("create_leaders"))
     return render_template("territory.html", title="Set Territory", form=form)
@@ -196,54 +210,127 @@ def new_leader_portrait_n():
 @app.route("/choose-flag-d", methods=["GET", "POST"])
 def choose_flag_d():
     ideology_letter = "d"
-    message = f"{current_country}'s Democratic Flag"
+    messages = f"{current_country}'s Democratic Flag"
     if request.method == "POST":
         democratic_flag = request.files["file_flag"]
         democratic_flag.save(os.path.join("user_flags", democratic_flag.filename))
         os.rename(f"user_flags/{democratic_flag.filename}",
                   f"user_flags/{country_tags[current_country]}_democratic.png")
         return redirect(url_for("choose_flag_f"))
-    return render_template("new_flag.html", ideology_letter=ideology_letter, message=message)
+    return render_template("new_flag.html", ideology_letter=ideology_letter, message=messages)
 
 
 @app.route("/choose-flag-f", methods=["GET", "POST"])
 def choose_flag_f():
     ideology_letter = "f"
-    message = f"{current_country}'s Fascist Flag"
+    messages = f"{current_country}'s Fascist Flag"
     if request.method == "POST":
         fascist_flag = request.files["file_flag"]
         fascist_flag.save(os.path.join("user_flags", fascist_flag.filename))
         os.rename(f"user_flags/{fascist_flag.filename}",
                   f"user_flags/{country_tags[current_country]}_fascism.png")
         return redirect(url_for("choose_flag_c"))
-    return render_template("new_flag.html", ideology_letter=ideology_letter, message=message)
+    return render_template("new_flag.html", ideology_letter=ideology_letter, message=messages)
 
 
 @app.route("/choose-flag-c", methods=["GET", "POST"])
 def choose_flag_c():
     ideology_letter = "c"
-    message = f"{current_country}'s Communist Flag"
+    messages = f"{current_country}'s Communist Flag"
     if request.method == "POST":
         communist_flag = request.files["file_flag"]
         communist_flag.save(os.path.join("user_flags", communist_flag.filename))
         os.rename(f"user_flags/{communist_flag.filename}",
                   f"user_flags/{country_tags[current_country]}_communism.png")
         return redirect(url_for("choose_flag_n"))
-    return render_template("new_flag.html", ideology_letter=ideology_letter, message=message)
+    return render_template("new_flag.html", ideology_letter=ideology_letter, message=messages)
 
 
 @app.route("/choose-flag-n", methods=["GET", "POST"])
 def choose_flag_n():
     ideology_letter = "n"
-    message = f"{current_country}'s Non-Aligned Flag"
+    note = f"{current_country}'s Non-Aligned Flag"
     if request.method == "POST":
         neutral_flag = request.files["file_flag"]
         neutral_flag.save(os.path.join("user_flags", neutral_flag.filename))
         os.rename(f"user_flags/{neutral_flag.filename}",
                   f"user_flags/{country_tags[current_country]}_neutrality.png")
-        return redirect(url_for("choose_flag_n"))
-    return render_template("new_flag.html", ideology_letter=ideology_letter, message=message)
+        return redirect(url_for("save_or_repeat"))
+    return render_template("new_flag.html", ideology_letter=ideology_letter, message=note)
+
+
+@app.route("/save",  methods=["GET", "POST"])
+def save_or_repeat():
+    nations = []
+    for i in range(len(list_of_countries)):
+        nations.append({"nation_name": list_of_countries[i]})
+    if "open" in request.form:
+        print("Here")
+        return redirect(url_for("new_country"))
+    elif "close" in request.form:
+        print("Here")
+        return redirect(url_for("finish"))
+    print(nations)
+    return render_template("save.html", nations=nations)
+
+
+@app.route("/finish")
+def finish():
+    create_a_mod_file(mod_name, ["Events"], "1.9.3", "1", path)
+    for i in range(len(list_of_countries)):
+        country_selected = list_of_countries[i]
+
+        create_new_nation(mod_name, country_selected, cultures[country_selected], country_color[country_selected])
+        assign_nation_tag(mod_name, country_tags[country_selected], country_selected)
+        assign_nation_color(mod_name, country_tags[country_selected], country_color[country_selected])
+        create_history_file(mod_name, country_tags[country_selected], country_selected)
+        set_nation_capital(mod_name, country_tags[country_selected], country_selected, capital)
+        assign_nation_states(mod_name, country_tags[country_selected], cored_owned_territory[country_selected], True,
+                             True)
+        if country_selected in cored_not_owned_territory.keys():
+            assign_nation_states(mod_name, country_tags[country_selected], cored_not_owned_territory[country_selected],
+                                 True, False)
+        if country_selected in occupied_owned_territory:
+            assign_nation_states(mod_name, country_tags[country_selected], occupied_owned_territory[country_selected],
+                                 False, True)
+        set_tech_and_convoys(mod_name, country_tags[country_selected], country_selected, ["infantry_equipment = 2"],
+                             "200")
+        set_1939_start(mod_name, country_tags[country_selected], country_selected)
+        set_politics(mod_name, country_selected, country_tags[country_selected], ruling_ideologies[country_selected],
+                     True)
+        set_political_popularity(mod_name, country_selected, country_tags[country_selected], pie, True)
+        set_politics(mod_name, country_selected, country_tags[country_selected], ruling_ideologies[country_selected],
+                     False)
+        set_political_popularity(mod_name, country_selected, country_tags[country_selected], pie, False)
+        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_d[country_selected],
+                          "liberalism")  # democratic leader
+        assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_d[current_country])
+        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_n[country_selected],
+                          "despotism")  # neutral leader
+        assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_n[country_selected])
+        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_c[country_selected],
+                          "stalinism")  # communist leader
+        assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_c[country_selected])
+        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_f[country_selected],
+                          "nazism")  # fascist leader
+        assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_f[country_selected])
+        set_country_flag(mod_name, country_tags[country_selected], "democratic")
+        set_country_flag(mod_name, country_tags[country_selected], "fascism")
+        set_country_flag(mod_name, country_tags[country_selected], "communism")
+        set_country_flag(mod_name, country_tags[country_selected], "neutrality")
+        localisation(mod_name, country_tags[country_selected], country_selected, country_names_f[country_selected],
+                     country_names_c[country_selected], country_names_d[country_selected],
+                     country_names_n[country_selected])
+        flags = os.listdir("user_flags")
+        for c in range(len(flags)):
+            if flags[c] == "git_holder.txt":
+                pass
+            else:
+                os.remove(f"user_flags/{flags[c]}")
+
+    return render_template("finish.html")
 
 
 if __name__ == '__main__':
+    webbrowser.open("http://127.0.0.1:5000/new-mod")
     app.run(debug=True)
