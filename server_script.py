@@ -1,7 +1,7 @@
-from flask import Flask, render_template, url_for, redirect, request, flash
+from flask import Flask, render_template, url_for, redirect, request, flash, send_file
 import forms
 import os
-import zipfile
+import shutil
 import urllib
 import webbrowser
 from script import *
@@ -148,12 +148,24 @@ def set_territory():
 @app.route("/create-leaders", methods=["GET", "POST"])
 def create_leaders():
     global leader_name_c, leader_name_d, leader_name_f, leader_name_n
+    existing_leaders = []
+    for i in range(len(list_of_countries)-1):
+        existing_leaders.append(leader_name_f[list_of_countries[i]])
+        existing_leaders.append(leader_name_c[list_of_countries[i]])
+        existing_leaders.append(leader_name_d[list_of_countries[i]])
+        existing_leaders.append(leader_name_n[list_of_countries[i]])
     form = forms.Create_Leader()
     if form.validate_on_submit():
         leader_name_n[current_country] = form.Leader_Name_n.data
         leader_name_f[current_country] = form.Leader_Name_f.data
         leader_name_c[current_country] = form.Leader_Name_c.data
         leader_name_d[current_country] = form.Leader_Name_d.data
+        if leader_name_n in existing_leaders or leader_name_d in existing_leaders or leader_name_c in existing_leaders \
+                or leader_name_f in existing_leaders:
+            note = flash("Please ensure you have not used this name in another country")
+            return render_template("leader_names.html", message=note)
+
+
         return redirect(url_for("new_leader_portrait_d"))
 
     return render_template("leader_names.html", title="New Leaders", form=form)
@@ -284,53 +296,57 @@ def finish():
         assign_nation_tag(mod_name, country_tags[country_selected], country_selected)
         assign_nation_color(mod_name, country_tags[country_selected], country_color[country_selected])
         create_history_file(mod_name, country_tags[country_selected], country_selected)
-        set_nation_capital(mod_name, country_tags[country_selected], country_selected, capital)
-        assign_nation_states(mod_name, country_tags[country_selected], cored_owned_territory[country_selected], True,
-                             True)
+        set_nation_capital(mod_name, country_tags[country_selected], country_selected, capital[country_selected])
+        assign_nation_states(mod_name, country_tags[country_selected], cored_owned_territory[country_selected],
+                             True, True)
         if country_selected in cored_not_owned_territory.keys():
             assign_nation_states(mod_name, country_tags[country_selected], cored_not_owned_territory[country_selected],
                                  True, False)
         if country_selected in occupied_owned_territory:
             assign_nation_states(mod_name, country_tags[country_selected], occupied_owned_territory[country_selected],
                                  False, True)
-        set_tech_and_convoys(mod_name, country_tags[country_selected], country_selected, ["infantry_equipment = 2"],
-                             "200")
+        set_tech_and_convoys(mod_name, country_tags[country_selected], country_selected, [], "60")
         set_1939_start(mod_name, country_tags[country_selected], country_selected)
-        set_politics(mod_name, country_selected, country_tags[country_selected], ruling_ideologies[country_selected],
-                     True)
+        set_politics(mod_name, country_selected, country_tags[country_selected], ruling_ideologies[country_selected], True)
         set_political_popularity(mod_name, country_selected, country_tags[country_selected], pie, True)
-        set_politics(mod_name, country_selected, country_tags[country_selected], ruling_ideologies[country_selected],
-                     False)
+        set_politics(mod_name, country_selected, country_tags[country_selected], ruling_ideologies[country_selected], False)
         set_political_popularity(mod_name, country_selected, country_tags[country_selected], pie, False)
-        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_d[country_selected],
-                          "liberalism")  # democratic leader
-        assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_d[current_country])
-        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_n[country_selected],
-                          "despotism")  # neutral leader
+        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_d[country_selected], "liberalism")  # democratic leader
+        assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_d[country_selected])
+        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_n[country_selected], "despotism")  # neutral leader
         assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_n[country_selected])
-        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_c[country_selected],
-                          "stalinism")  # communist leader
+        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_c[country_selected], "stalinism")  # communist leader
         assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_c[country_selected])
-        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_f[country_selected],
-                          "nazism")  # fascist leader
+        create_new_leader(mod_name, country_tags[country_selected], country_selected, leader_name_f[country_selected], "nazism")  # fascist leader
         assign_leader_portrait(mod_name, country_tags[country_selected], leader_name_f[country_selected])
         set_country_flag(mod_name, country_tags[country_selected], "democratic")
         set_country_flag(mod_name, country_tags[country_selected], "fascism")
         set_country_flag(mod_name, country_tags[country_selected], "communism")
         set_country_flag(mod_name, country_tags[country_selected], "neutrality")
-        localisation(mod_name, country_tags[country_selected], country_selected, country_names_f[country_selected],
-                     country_names_c[country_selected], country_names_d[country_selected],
+        localisation(mod_name, country_tags[country_selected], country_selected, country_names_f[country_selected], country_names_c[country_selected],
+                     country_names_d[country_selected],
                      country_names_n[country_selected])
+
         flags = os.listdir("user_flags")
         for c in range(len(flags)):
             if flags[c] == "git_holder.txt":
                 pass
             else:
                 os.remove(f"user_flags/{flags[c]}")
-
+        shutil.make_archive(f"{mod_name}", 'zip', "user_data")
+        download_file = f"{mod_name}.zip"
+        os.remove(f"{mod_name}.zip")
+        return send_file(download_file, as_attachment=True)
     return render_template("finish.html")
 
 
 if __name__ == '__main__':
+    mod = os.listdir("user_data")
+    for c in range(len(mod)):
+        if mod[c] == "git_holder":
+            pass
+        else:
+            os.remove(f"user_data/{mod[c]}")
     webbrowser.open("http://127.0.0.1:5000/new-mod")
-    app.run(debug=True)
+    app.run(debug=False)
+

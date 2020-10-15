@@ -37,7 +37,7 @@ class Create_New_Country(FlaskForm):
 
 class Set_Territory(FlaskForm):
     cored_owned = StringField("Owned Core Territory", validators=[DataRequired()])
-    nations_capital = StringField("Set Capital", validators=[Length(min=1, max=3)])
+    nations_capital = StringField("Set Capital")
     cored_not_owned = StringField("Claimed Core Territory")
     occupied_not_owned = StringField("Owned Occupied Territory")
     submit = SubmitField("Confirm", validators=[DataRequired()])
