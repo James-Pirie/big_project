@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect, request, flash, sen
 import forms
 import os
 import shutil
-import urllib
+import admin
 import webbrowser
 from script import *
 
@@ -99,10 +99,10 @@ def new_country():
             message.append(flash("Please ensure your RGB values are in the same format as the example"))
             errors = True
         if len(form.country_tag.data) != 3:
-            message.append("Please ensure your country tag is only three letters long")
+            message.append(flash("Please ensure your country tag is only three letters long"))
             errors = True
         if not form.country_tag.data.isalpha():  # doesn't work
-            message.append("Please ensure your country tag is only letters")
+            message.append(flash("Please ensure your country tag is only letters"))
             errors = True
         if not errors:
             list_of_countries.append(form.country_name.data)  # add to nation to the list
@@ -136,11 +136,11 @@ def set_territory():
     global cored_not_owned_territory, cored_owned_territory, occupied_owned_territory, capital
     form = forms.Set_Territory()
     if form.validate_on_submit():
-
         capital[current_country] = form.nations_capital.data.strip()
         cored_owned_territory[current_country] = form.cored_owned.data.split()
         occupied_owned_territory[current_country] = form.cored_not_owned.data.split()
         cored_not_owned_territory[current_country] = form.occupied_not_owned.data.split()
+
         return redirect(url_for("create_leaders"))
     return render_template("territory.html", title="Set Territory", form=form)
 
@@ -164,7 +164,6 @@ def create_leaders():
                 or leader_name_f in existing_leaders:
             note = flash("Please ensure you have not used this name in another country")
             return render_template("leader_names.html", message=note)
-
 
         return redirect(url_for("new_leader_portrait_d"))
 
@@ -342,11 +341,6 @@ def finish():
 
 if __name__ == '__main__':
     mod = os.listdir("user_data")
-    for c in range(len(mod)):
-        if mod[c] == "git_holder":
-            pass
-        else:
-            os.remove(f"user_data/{mod[c]}")
-    webbrowser.open("http://127.0.0.1:5000/new-mod")
-    app.run(debug=False)
 
+    webbrowser.open("http://127.0.0.1:5000/new-mod")
+    app.run(debug=True)
