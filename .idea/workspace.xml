@@ -20,11 +20,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ee9e35f-e61c-4292-8680-4b08011d2cbf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/big_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/big_project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/server_script" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/finish.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/finish.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/save.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/save.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/common/countries/England.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/common/country_tags/00_countries.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/common/country_tags/colors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/descriptor.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/FRE_communism.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/FRE_democratic.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/FRE_fascism.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/FRE_neutrality.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/medium/FRE_communism.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/medium/FRE_democratic.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/medium/FRE_fascism.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/medium/FRE_neutrality.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/small/FRE_communism.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/small/FRE_democratic.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/small/FRE_fascism.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/flags/small/FRE_neutrality.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/leaders/FRE/Jack.dds" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/leaders/FRE/John.dds" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/leaders/FRE/Johnny.dds" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/gfx/leaders/FRE/King Kevin.dds" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/history/countries/FRE - England.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/history/states/14-Brittany.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/history/states/15-Normandy.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/history/states/29-Pas de Calais.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_data/Working Mod/localisation/countries_l_english.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,19 +80,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/user_data/Yo Mama" />
-      <recent name="$PROJECT_DIR$/user_portraits" />
-      <recent name="$PROJECT_DIR$/user_flags" />
-      <recent name="$PROJECT_DIR$/user_data" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/data/history/states" />
       <recent name="$PROJECT_DIR$/user_portraits" />
       <recent name="$PROJECT_DIR$/user_flags" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/data_processing/user_portraits" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/user_data/Yo Mama" />
+      <recent name="$PROJECT_DIR$/user_portraits" />
+      <recent name="$PROJECT_DIR$/user_flags" />
+      <recent name="$PROJECT_DIR$/user_data" />
     </key>
   </component>
   <component name="RunManager" selected="Python.server_script">
@@ -188,9 +213,10 @@
       <screen x="0" y="23" width="1680" height="946" />
     </state>
     <state x="304" y="158" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.946@0.23.1680.946" timestamp="1602060900782" />
-    <state x="432" y="306" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598779681860">
-      <screen x="0" y="23" width="1680" height="946" />
+    <state x="494" y="311" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602975680665">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="494" y="311" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1602975680665" />
     <state x="432" y="306" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.946@0.23.1680.946" timestamp="1598779681860" />
     <state x="578" y="250" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602067321661">
       <screen x="0" y="23" width="1680" height="946" />
@@ -204,38 +230,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602832109439" />
-    <state width="1900" height="282" key="GridCell.Tab.0.bottom" timestamp="1602835694002">
+    <state width="1900" height="233" key="GridCell.Tab.0.bottom" timestamp="1602973915338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1900" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602835694002" />
+    <state width="1900" height="233" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602973915338" />
     <state width="1659" height="240" key="GridCell.Tab.0.bottom/0.23.1680.946@0.23.1680.946" timestamp="1602743969218" />
     <state width="1659" height="240" key="GridCell.Tab.0.bottom/0.23.1680.947@0.23.1680.947" timestamp="1602743197358" />
     <state width="1659" height="240" key="GridCell.Tab.0.bottom/0.23.1680.949@0.23.1680.949" timestamp="1602743563422" />
-    <state width="1900" height="282" key="GridCell.Tab.0.center" timestamp="1602835694002">
+    <state width="1900" height="233" key="GridCell.Tab.0.center" timestamp="1602973915338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1900" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602835694002" />
+    <state width="1900" height="233" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602973915338" />
     <state width="1659" height="240" key="GridCell.Tab.0.center/0.23.1680.946@0.23.1680.946" timestamp="1602743969217" />
     <state width="1659" height="240" key="GridCell.Tab.0.center/0.23.1680.947@0.23.1680.947" timestamp="1602743197357" />
     <state width="1659" height="240" key="GridCell.Tab.0.center/0.23.1680.949@0.23.1680.949" timestamp="1602743563421" />
-    <state width="1900" height="282" key="GridCell.Tab.0.left" timestamp="1602835694002">
+    <state width="1900" height="233" key="GridCell.Tab.0.left" timestamp="1602973915338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1900" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602835694002" />
+    <state width="1900" height="233" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602973915338" />
     <state width="1659" height="240" key="GridCell.Tab.0.left/0.23.1680.946@0.23.1680.946" timestamp="1602743969217" />
     <state width="1659" height="240" key="GridCell.Tab.0.left/0.23.1680.947@0.23.1680.947" timestamp="1602743197356" />
     <state width="1659" height="240" key="GridCell.Tab.0.left/0.23.1680.949@0.23.1680.949" timestamp="1602743563421" />
-    <state width="1900" height="282" key="GridCell.Tab.0.right" timestamp="1602835694002">
+    <state width="1900" height="233" key="GridCell.Tab.0.right" timestamp="1602973915338">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1900" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602835694002" />
+    <state width="1900" height="233" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602973915338" />
     <state width="1659" height="240" key="GridCell.Tab.0.right/0.23.1680.946@0.23.1680.946" timestamp="1602743969218" />
     <state width="1659" height="240" key="GridCell.Tab.0.right/0.23.1680.947@0.23.1680.947" timestamp="1602743197357" />
     <state width="1659" height="240" key="GridCell.Tab.0.right/0.23.1680.949@0.23.1680.949" timestamp="1602743563422" />
-    <state x="336" y="149" key="SettingsEditor" timestamp="1602833614961">
+    <state x="749" y="189" key="SettingsEditor" timestamp="1602975276034">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="336" y="149" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602833614961" />
+    <state x="749" y="189" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602975276034" />
     <state x="371" y="135" key="SettingsEditor/0.23.1680.946@0.23.1680.946" timestamp="1598060123100" />
     <state x="478" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1602746368974">
       <screen x="0" y="23" width="1680" height="947" />

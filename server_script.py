@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, redirect, request, flash, send_file
 import forms
 import os
-import shutil
+from shutil import make_archive
 import admin
 import webbrowser
 from script import *
@@ -155,13 +155,16 @@ def create_leaders():
         existing_leaders.append(leader_name_d[list_of_countries[i]])
         existing_leaders.append(leader_name_n[list_of_countries[i]])
     form = forms.Create_Leader()
+    print(existing_leaders)
     if form.validate_on_submit():
         leader_name_n[current_country] = form.Leader_Name_n.data
         leader_name_f[current_country] = form.Leader_Name_f.data
         leader_name_c[current_country] = form.Leader_Name_c.data
         leader_name_d[current_country] = form.Leader_Name_d.data
-        if leader_name_n in existing_leaders or leader_name_d in existing_leaders or leader_name_c in existing_leaders \
-                or leader_name_f in existing_leaders:
+        if leader_name_n[current_country] in existing_leaders \
+                or leader_name_d[current_country] in existing_leaders \
+                or leader_name_c[current_country] in existing_leaders \
+                or leader_name_f[current_country] in existing_leaders:
             note = flash("Please ensure you have not used this name in another country")
             return render_template("leader_names.html", message=note)
 
@@ -281,6 +284,8 @@ def save_or_repeat():
     elif "close" in request.form:
         print("Here")
         return redirect(url_for("finish"))
+    if "reset" in request.form:
+        return redirect(url_for("new_mod"))
     print(nations)
     return render_template("save.html", nations=nations)
 
@@ -326,21 +331,32 @@ def finish():
                      country_names_d[country_selected],
                      country_names_n[country_selected])
 
-        flags = os.listdir("user_flags")
-        for c in range(len(flags)):
-            if flags[c] == "git_holder.txt":
-                pass
-            else:
-                os.remove(f"user_flags/{flags[c]}")
-        shutil.make_archive(f"{mod_name}", 'zip', "user_data")
+        make_archive(f"{mod_name}", 'zip', "user_data")
         download_file = f"{mod_name}.zip"
-        os.remove(f"{mod_name}.zip")
+        render_template("finish.html")
         return send_file(download_file, as_attachment=True)
     return render_template("finish.html")
 
 
-if __name__ == '__main__':
-    mod = os.listdir("user_data")
+@app.route("/what-to-do")
+def instructions():
+    return render_template("finish.html")
 
+
+if __name__ == '__main__':
+    flags = os.listdir("user_flags")
+    for c in range(len(flags)):
+        if flags[c] == "git_holder.txt":
+            pass
+        else:
+            os.remove(f"user_flags/{flags[c]}")
+    protraits = os.listdir("user_portraits")
+    for c in range(len(protraits)):
+        if protraits[c] == "git_holder":
+            pass
+        else:
+            os.remove(f"user_portraits/{protraits[c]}")
+    mod = os.listdir("user_data")
     webbrowser.open("http://127.0.0.1:5000/new-mod")
     app.run(debug=True)
+
